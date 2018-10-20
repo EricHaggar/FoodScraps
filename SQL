@@ -1,0 +1,28 @@
+-- Company Informations
+--Inserting values
+
+CREATE TABLE IF NOT EXISTS company_info(
+      company_name text NOT NULL, --name of the company
+      company_address text  NOT NUll, --Address of the company
+      company_income int NOT NULL,  --the company's income
+      longitude text NOT NULL,
+      latitude text NOT NULL,
+      Glassdoor_rating text NOT NULL, --Rating
+      taxes_statues text NOT NULL, --see if their texas are good
+      recalls_num int NOT NULL,  --see the number of scandels
+      company_id int NOT NUll -- ID to differentiate each company
+      food_category text NOT Null-- industry
+      origin_country text NOT NULL --where they are importing their productsint
+      final_rating int NOT NULL -- % rating
+      primary key (company_id,company_name,page,studentnum)
+      );
+
+
+
+--INSERT DATA
+--=======================
+
+begin transaction;
+insert or replace into company_info (company_name, company_address, company_income, longitude, latitude, Glassdoor_rating, taxes_statues, recalls_num, company_id, food_category,origin_country,final_rating)
+  values ('Tamer' , 'home','1234' ,'44.194 N' , '77.3642 W', '3', '5','34','3242','sadf','asdfasd','asdfasd');
+  end transaction;
