@@ -1,6 +1,14 @@
 import os
-import glassdoor_script 
+import glassdoor_script
+import recalls_script
 
-glassdoor_script.main()
+overalScore=[]
+numOfRecalls,secoreRecall=recalls_script.b()
+scores=glassdoor_script.main()
+for i in range(0,len(companies)):
+    overalScore[i]=(secoreRecall[i]*0.7+scores[i]*0.3)/100
+
+
+
 
 

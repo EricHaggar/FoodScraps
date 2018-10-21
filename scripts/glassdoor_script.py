@@ -2,13 +2,14 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium import *
 import xlwt
-import json
 
 companies = ['"McCain Foods"', "Cara Operations", "Nature's Path", "Olymel", "Purity Factories", "Rogers Sugar", "Saputo", "Naya Waters", "Sobeys", "Daiya", "SunOpta",
              "Organic Meadow Cooperative", "Agropur", "Première Moisson", "Bothwell Cheese", "Dan-D Foods", "Maple Leaf Foods", "Kraft Heinz", "M&M Food Market",
              "PepsiCo", "Dare Foods", "Flowers Foods", "Pinnacle Foods", "Reser's Fine Foods", "Kawartha Dairy Company", "Nestle", "Saputo Inc", "Just Us!",
              "Laura Secord Chocolates", "Voortman Cookies", "Lester's Foods Ltd.", "Earth's Own Food Company", "Canyon Creek Food Company", "Cara Operations",
              "Chapman's", "Metro Inc."]
+scoreOverall=0
+scoresOverall=[]
 
 
 
@@ -31,6 +32,9 @@ def scrape(url,name):
     ratingWeight=0.1
     sizeWeight=0.1
     revenueWeight=0.1
+    scoreRevenue=0
+    scoreSize=0
+    scoreRate=0
 
     
     
@@ -76,7 +80,6 @@ def scrape(url,name):
         elif (ratings == "0"):
             scoreRate=10
             
-        print(scoreRate)
         nbr = driver.find_element_by_xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[3]/span').text
         if (nbr == "1 to 50 employees"):
             scoreSize=10
@@ -89,11 +92,11 @@ def scrape(url,name):
         elif(nbr == "10000+ employees"):
             scoreSize=0
         else: scoreSize=2
+    
         
 
         
         
-        print(scoreSize)
         revenue=driver.find_element_by_xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[7]/span').text
         if (revenue[:6] == "Unknown"):
             scoreRevenue=10
@@ -106,31 +109,18 @@ def scrape(url,name):
         elif(revenue[:11] == "$10+ billion"):
             scoreRevenue=0
         else: scoreRevenue=8
-        print(scoreRevenue)
-        
-        
 
-        x = {
-          "name": name,
-          "review": ratings,
-          "revenue": revenue,
-          "size": nbr
-        }
-
-        # convert into JSON:
-        with open('data.txt', 'w') as outfile:  
-            json.dump(x, outfile)
-        driver.quit()
-
-
-        
-
+        scoreOveral=scoreRevenue*revenueWeight+scoreSize*sizeWeight+scoreRate*ratingWeight
     except NoSuchElementException:
         print("finished")
+    driver.quit()
+    return scoreOverall
 
 def main():
-        url=findURL(companies[0]+'" glassdoor.ca/Overview"')
-        scrape(url,companies[0])
+    for i in range(0,len(companies)):
+        url=findURL(companies[i]+'" glassdoor.ca/Overview"')
+        scoresOverall.append(scrape(url,companies[i]))
+    return scoresOverall
         
 
         
