@@ -1,6 +1,6 @@
 import os
 import glassdoor_script 
 
-glassdoor_script.scrape()
+glassdoor_script.main()
 
 
