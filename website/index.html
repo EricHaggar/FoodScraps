@@ -114,18 +114,27 @@
 			font-weight: 400;
 		}
 
- 
+		#instructions p {
+			margin: 0;
+		}
+
+		#instrucions {
+			margin-top: -20px;
+		}
+
     </style>
   </head>
   <body>
     <!--The div element for the map -->
+
+
     <div id="info">
     	<div id="infoInside">
-    		
+    	
     		<h1 class="ptop">CANDEV Food Producers</h1>
     		<div id="marker" class="detail">
     			<h2 id="name"></h2>
-				<h3>Rating Score</h3>
+				<h3>Review Score</h3>
 				<div class="width">
 					<div id="progressBar1" class="progress_bar"></div>	
 				</div>
@@ -271,6 +280,44 @@
 	   	metro.setAnimation(null); 
 	  }
 
+
+    	var citymap = {
+		  toronto: {
+		    center: {lat: 43.860314, lng: -79.674},
+		    population: 1714856
+		  },
+		  newyork: {
+		    center: {lat: 45.517843, lng: -74.239148},
+		    population: 2405837
+		  },
+
+		  vancouver: {
+		    center: {lat: 49.25, lng: -123.1},
+		    population: 603502
+		  },
+		  winnipeg: {
+		    center: {lat: 49.90, lng: -96.9},
+		    population: 603502
+		  }
+		};
+
+		  // Construct the circle for each value in citymap.
+		  // Note: We scale the area of the circle based on the population.
+		  for (var city in citymap) {
+		    // Add the circle for this city to the map.
+		    var cityCircle = new google.maps.Circle({
+		      strokeColor: '#FF0000',
+		      strokeOpacity: 0.8,
+		      strokeWeight: 1,
+		      fillColor: '#FF0000',
+		      fillOpacity: 0.15,
+		      map: map,
+		      center: citymap[city].center,
+		      radius: Math.sqrt(citymap[city].population) * 100
+		    });
+		  }
+
+
 	  mcCain.addListener('click', function() {
 	   	clearAnimation();
 	   	mcCain.setAnimation(google.maps.Animation.BOUNCE);
@@ -316,6 +363,232 @@
 		
 	  });
 
+	  saputo.addListener('click', function() {
+	   	clearAnimation();
+	   	saputo.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "Saputo Inc.";
+	  	map.setZoom(8);
+	  	map.setCenter(saputo.getPosition());
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "30%";
+	  	  progress.style.backgroundColor = "#d5fc5f";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "75%";
+	  	  progress.style.backgroundColor = "#ffce52";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "10%";
+	  	  progress.style.backgroundColor = "#8fde51";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff3f1e";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "75%";
+	  	  progress.style.backgroundColor = "#ff9d40";
+		
+	  });
+
+
+	  sunopta.addListener('click', function() {
+	   	clearAnimation();
+	   	sunopta.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "Sunopta Foods";
+	  	map.setZoom(8);
+	  	map.setCenter(sunopta.getPosition());
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "30%";
+	  	  progress.style.backgroundColor = "#d5fc5f";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "60%";
+	  	  progress.style.backgroundColor = "#ffce52";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "10%";
+	  	  progress.style.backgroundColor = "#8fde51";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff3f1e";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff140f";
+		
+	  });
+
+	  sunopta.addListener('click', function() {
+	   	clearAnimation();
+	   	sunopta.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "Sunopta Foods";
+	  	map.setZoom(8);
+	  	map.setCenter(sunopta.getPosition());
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "30%";
+	  	  progress.style.backgroundColor = "#d5fc5f";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "60%";
+	  	  progress.style.backgroundColor = "#ffce52";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "10%";
+	  	  progress.style.backgroundColor = "#8fde51";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff3f1e";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff140f";
+		
+	  });
+
+	  bothwell.addListener('click', function() {
+	   	clearAnimation();
+	   	bothwell.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "Bothwell Foods";
+	  	map.setZoom(8);
+	  	map.setCenter(bothwell.getPosition());
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "32%";
+	  	  progress.style.backgroundColor = "#d5fc5f";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "60%";
+	  	  progress.style.backgroundColor = "#ffce52";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "10%";
+	  	  progress.style.backgroundColor = "#8fde51";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff3f1e";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "85%";
+	  	  progress.style.backgroundColor = "#ff993f";
+		
+	  });
+
+	  maple.addListener('click', function() {
+	   	clearAnimation();
+	   	maple.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "Maple Leaf Foods";
+	  	map.setZoom(8);
+	  	map.setCenter(maple.getPosition());
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "85%";
+	  	  progress.style.backgroundColor = "#ff993f";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "60%";
+	  	  progress.style.backgroundColor = "#ffce52";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "95%";
+	  	  progress.style.backgroundColor = "#ff3118";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "94%";
+	  	  progress.style.backgroundColor = "#ff3f1e";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "85%";
+	  	  progress.style.backgroundColor = "#ff993f";
+		
+	  });
+
 
 	}
     </script>
@@ -324,6 +597,12 @@
     * The key parameter will contain your own API key (which is not needed for this tutorial)
     * The callback parameter executes the initMap() function
     -->
+
+    <script>
+
+
+    </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtVBt2DI_zAuB1LYKG-04XlVqGPMM0lQY&callback=initMap">
     </script>
