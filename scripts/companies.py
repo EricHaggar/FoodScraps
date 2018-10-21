@@ -7,6 +7,7 @@ companies = ["McCain Foods", "Cara Operations", "Nature's Path", "Olymel", "Puri
              "Chapman's", "Metro Inc."]
 
 
+
              Organic Meadow Cooperative : Latitude= 43.493760, Longitude= -80.200700
              Agropur : Latitude=45.494420, Longitude = -75.477290
              Première Moisson: Latitude= 45.382940, Longitude=-74.013040
@@ -24,3 +25,12 @@ companies = ["McCain Foods", "Cara Operations", "Nature's Path", "Olymel", "Puri
              Nestle : Latitude = 43.760830, , Longitude = -79.412170
              Saputo Inc: Latitude = 46.373749 , Longitude = -75.981689
              Just Us!: Latitude = 45.105130, Longitude = -64.293470
+             Laura Secord Chocolates : Latitude = 46.816650 , Longitude = -71.273610
+             Voortman Cookies : Latitude = 43.380540, Longitude = 79.776040
+             Lester's Foods Ltd. : Latitude = 45.578920, Longitude = -73.728460
+             Earth's Own Food Company : Latitude = 49.279200, Longitude =-123.116220
+             Canyon Creek Food Company: Latitude = 53.490280, Longitude= -113.457390
+             Cara Operations : Latitude = 43.819450, Longitude = -79.542839
+             Chapman's : Latitude = 44.316750, Longitude = -80.645560
+             Metro Inc. : Latitude = 45.411280, Longitude = -75.647350
+             
