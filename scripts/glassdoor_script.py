@@ -3,10 +3,21 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium import *
 import xlwt
 
-url_link = "https://www.glassdoor.com/Reviews/U-S-Bank-Reviews-E8937_P1.htm"
-company_info = xlwt.Workbook(encoding="utf-8")
-name = input("What would you like to name the file?") + ".csv"
-sample_size = (input("How much data do you want? (5000 would give 5000 reviews) Enter 'all' for full data"))
+
+def findURL(query):
+
+    try: 
+        from googlesearch import search 
+    except ImportError:  
+        print("No module named 'google' found") 
+  
+        # to search 
+      
+    for j in search(query, tld="com", lang='en', num=1, stop=1, pause=1): 
+        url = j
+
+    return j
+
 
 def scrape(base_url, workbook, name, ss):
     worksheet = workbook.add_sheet("sheet1", cell_overwrite_ok=True)
@@ -29,9 +40,9 @@ def scrape(base_url, workbook, name, ss):
     driver.get("https://www.glassdoor.com/profile/login_input.htm?userOriginHook=HEADER_SIGNIN_LINK")
     # entering username/password
     username = driver.find_element_by_name("username")
-    username.send_keys("amham077@uottawa.ca")
+    username.send_keys("glassdoorScraper@gmail.com")
     password = driver.find_element_by_name("password")
-    password.send_keys("FoodScraps")
+    password.send_keys("glassdoor")
     driver.find_element_by_xpath("//*[@class='gd-btn gd-btn-1 fill']").click()
     sample_size = ss
     # after login
@@ -49,10 +60,7 @@ def scrape(base_url, workbook, name, ss):
         page = int(page)
         counter = 0
         loop_count = 0
-        if sample_size == "all":
-            sample_size = 99999
-        else:
-            sample_size = int(sample_size)
+        sample_size = int(sample_size)
         while loop_count < sample_size/10:
             # search the company
             # ~~~~~~~~~~~~~~~~~~~TITLE OF REVIEW~~~~~~~~~~~~~~~~~~~~~~
@@ -82,88 +90,13 @@ def scrape(base_url, workbook, name, ss):
             if int(page) == 1:
                 del ratingarr[0]
 
-            # ~~~~~~~~~~~~~~~~~~~~AUTHOR INFO~~~~~~~~~~~~~~~~~~~~~~~~
-            total_author_info = driver.find_elements_by_xpath('//*[@class="authorInfo tbl hideHH"]')
-            cfstatusarr = []
-            posarr = []
-            locarr = []
-            for author_info in total_author_info:
-                infolist = author_info.text.split(' - ')
-                cfstatus = infolist[0]
-                position = ""
-                location = ""
-                if " in " in infolist[1]:
-                    pos_split = infolist[1].split(' in ')
-                    position = pos_split[0]
-                    location = pos_split[1]
-                else:
-                    position = infolist[1]
-                cfstatusarr.append(cfstatus)
-                posarr.append(position)
-                locarr.append(location)
-
-            # ~~~~~~~~~~~~~~~~~~~~~~~~~FULL REVIEW~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            triples = driver.find_elements_by_xpath('//*[@class="cell reviewBodyCell"]')
-            recarr = []
-            outlookarr = []
-            othertextarr = []
-            prosarr = []
-            consarr = []
-            advarr = []
-            for triple in triples:
-                recommends = ""
-                outlook = ""
-                #ceo = None
-                othertext = ""
-                pros = ""
-                cons = ""
-                advice = ""
-                textlist = triple.text.splitlines()
-                for index in range(0, len(textlist) - 1):
-                    if "Recommend" in textlist[index]:
-                        recommends = textlist[index]
-                    elif "Outlook" in textlist[index]:
-                        outlook = textlist[index]
-                    #elif "CEO" in textlist[index]:
-                    #    ceo = textlist[index]
-                    elif "Pros" == textlist[index]:
-                        pros = textlist[index + 1]
-                        textlist[index + 1] = "got"
-                    elif "Cons" == textlist[index]:
-                        cons = textlist[index + 1]
-                        textlist[index + 1] = "got"
-                    elif "Advice to Management" in textlist[index]:
-                        advice = textlist[index + 1]
-                        textlist[index + 1] = "got"
-                    elif "got" == textlist[index]:
-                        continue
-                    else:
-                        othertext = textlist[index]
-                recarr.append(recommends)
-                outlookarr.append(outlook)
-                othertextarr.append(othertext)
-                prosarr.append(pros)
-                consarr.append(cons)
-                advarr.append(advice)
-                print(len(titlearr))
-                print(len(true_timestamps))
-
+    
             for index in range(0, len(titlearr)):
                 print("INDEX IS: ", index)
                 print("ROW: ", int(page)*10+index)
-                worksheet.write(int(page)*10+index, 1, titlearr[index])
-                worksheet.write(int(page)*10+index, 2, true_timestamps[index])
+                
                 worksheet.write(int(page)*10+index, 3, ratingarr[index])
-                worksheet.write(int(page)*10+index, 4, cfstatusarr[index])
-                worksheet.write(int(page)*10+index, 5, posarr[index])
-                worksheet.write(int(page)*10+index, 6, locarr[index])
-                worksheet.write(int(page)*10+index, 7, recarr[index])
-                worksheet.write(int(page)*10+index, 8, outlookarr[index])
-                worksheet.write(int(page)*10+index, 9, othertextarr[index])
-                worksheet.write(int(page)*10+index, 10, prosarr[index])
-                worksheet.write(int(page)*10+index, 11, consarr[index])
-                worksheet.write(int(page)*10+index, 12, advarr[index])
-            loop_count += 1
+                loop_count += 1
             try:
                 found = driver.find_element_by_css_selector("#FooterPageNav > div > ul > li.page.current.last > span")
                 print(found.text)
@@ -182,7 +115,13 @@ def scrape(base_url, workbook, name, ss):
         workbook.save(name)
         print("finished")
 
-
-scrape(url_link, company_info, name, sample_size)
+def mainScraper(a,i):
+    company_info = xlwt.Workbook(encoding="utf-8")
+    name = "output"+str(i)+".xls"
+    sample_size = "10"
+    url_link = findURL(a+" glassdoor")
+    url_link = url_link[:-4] + "_P1.htm"
+    scrape(url_link, company_info, name, sample_size)
+    
 
 
