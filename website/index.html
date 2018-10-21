@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 96vh;  /* The height is 400 pixels */
+        width: 75%;  /* The width is the width of the web page */
+        float: left;
+       }
+
+       #info {
+       	height: 96vh;
+       	width: 21%;
+       	float: right;
+       	padding: 0% 2% 2% 1%;
+       }
+
+       #infoInside {
+       	background-color: #f2f2f2;
+       	width: 100%;
+       	height: 100%;
+       }
+
+       h1 {
+       	font-family: 'Roboto', sans-serif;
+       	color: #515151;
+       	text-align: center;
+       	line-height: 1.6;
+       	font-weight: 300;
+       }
+
+       .ptop {
+       	padding-top: 30px;
+       }
+
+       h2 {
+       	font-family: 'Roboto', sans-serif;
+       	font-size: 1.5em;
+       	color: #515151;
+       	text-align: center;
+       	line-height: 1.6;
+       	font-weight: 500;
+       }
+
+       .detail {
+       	background-color: #dddddd;
+       	width: 80%;
+       	height: 70%;
+       	text-align: center;
+       	padding: 3%;
+       	margin: 0 auto;
+       	-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+       }
+
+       h4 {
+       	font-family: 'Roboto', sans-serif;
+       	font-size: 2em;
+       	margin: 0px;
+       }
+
+       h2 {
+       	margin: 10px 0px 0px 0px;
+       }
+
+       p {
+       	text-align: left;
+       	font-family: 'Roboto', sans-serif;
+       	font-size: 0.9em;
+       	padding: 2%;
+       }
+
+       #marker {
+       	visibility: hidden;
+       	z-index: 1;
+       }
+ 
+    </style>
+  </head>
+  <body>
+    <!--The div element for the map -->
+    <div id="info">
+    	<div id="infoInside">
+    		
+    		<h1 class="ptop">CANDEV Meat Producers</h1>
+    		<div id="marker" class="detail">
+    			<h2 id="name">Abu Zain Company</h2>
+    			<p id="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur non sapien a vehicula. Aliquam hendrerit libero ut mi iaculis, ac mattis sem dignissim. Praesent lobortis justo sed felis condimentum, id lacinia massa lobortis.</p>
+				<h2>Severity Percentage</h2>
+				<h4 id="severity">86%</h4>
+				<h2>Reasons:</h2>
+    			<p id="reasons">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur non sapien a vehicula. Aliquam hendrerit libero ut mi iaculis, ac mattis sem dignissim.</p>
+    		</div>
+
+    	</div>
+    </div>
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var centerMap = {lat: 57.593864, lng: -97.307654};
+  var location1 = {lat: 45.3827, lng:-75.6959}
+  var location2 = {lat: 45.259519, lng:-76.083369}
+  var location3 = {lat: 49.178831, lng:-84.488888}
+  var location4 = {lat: 51.928007, lng:-111.865625}
+  var location5 = {lat: 49.570825, lng:-71.263177}
+  var location6 = {lat: 58.045328, lng:-129.469366}
+
+
+
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: centerMap});
+  // The marker, positioned at Uluru
+  var marker1 = new google.maps.Marker({position: location1, map: map, title: 'Click to zoom'});
+  var marker2 = new google.maps.Marker({position: location2, map: map});
+  var marker3 = new google.maps.Marker({position: location3, map: map});
+  var marker4 = new google.maps.Marker({position: location4, map: map});
+  var marker5 = new google.maps.Marker({position: location5, map: map});
+  var marker6 = new google.maps.Marker({position: location6, map: map});
+
+
+
+  marker1.addListener('click', function() {
+   	marker2.setAnimation(null);
+   	marker3.setAnimation(null);
+   	marker4.setAnimation(null);
+   	marker5.setAnimation(null);
+   	marker6.setAnimation(null);
+
+   	marker1.setAnimation(google.maps.Animation.BOUNCE);
+  	var x = document.getElementById("marker");
+  	var name = document.getElementById("name");
+  	var desc = document.getElementById("desc");
+  	var severity = document.getElementById("severity");
+  	var reasons = document.getElementById("reasons");
+
+  	x.style.visibility = "visible";
+  	name.innerHTML = "TITLE1";
+  	desc.innerHTML = "DESCRIPTION1";
+  	severity.innerHTML = "69%";
+  	reasons.innerHTML = "THESE ARE REASONS 1";
+  	map.setZoom(8);
+  	map.setCenter(marker1.getPosition());
+  });
+
+   marker2.addListener('click', function() {
+   	marker2.setAnimation(null);
+   	marker3.setAnimation(null);
+   	marker4.setAnimation(null);
+   	marker5.setAnimation(null);
+   	marker6.setAnimation(null);
+
+   	marker1.setAnimation(google.maps.Animation.BOUNCE);
+   	
+   	marker2.setAnimation(google.maps.Animation.BOUNCE);
+  	var x = document.getElementById("marker");
+  	var name = document.getElementById("name");
+  	var desc = document.getElementById("desc");
+  	var severity = document.getElementById("severity");
+  	var reasons = document.getElementById("reasons");
+
+  	x.style.visibility = "visible";
+  	name.innerHTML = "TITLE2";
+  	desc.innerHTML = "DESCRIPTION2";
+  	severity.innerHTML = "99%";
+  	reasons.innerHTML = "THESE ARE REASONS 2";
+  	map.setZoom(8);
+  	map.setCenter(marker1.getPosition());
+  });
+
+
+
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtVBt2DI_zAuB1LYKG-04XlVqGPMM0lQY&callback=initMap">
+    </script>
+  </body>
+</html>
