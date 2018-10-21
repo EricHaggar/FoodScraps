@@ -6,16 +6,16 @@ from bs4 import BeautifulSoup
 
 
 
-companies = ['"McCain Foods"', "Cara Operations", "Nature's Path", "Olymel", "Purity Factories", "Rogers Sugar", "Saputo", "Naya Waters", "Sobeys", "Daiya", "SunOpta",
-             "Organic Meadow Cooperative", "Agropur", "Première Moisson", "Bothwell Cheese", "Dan-D Foods", "Maple Leaf Foods", "Kraft Heinz", "M&M Food Market",
-             "PepsiCo", "Dare Foods", "Flowers Foods", "Pinnacle Foods", "Reser's Fine Foods", "Kawartha Dairy Company", "Nestle", "Saputo Inc", "Just Us!",
-             "Laura Secord Chocolates", "Voortman Cookies", "Lester's Foods Ltd.", "Earth's Own Food Company", "Canyon Creek Food Company", "Cara Operations",
-             "Chapman's", "Metro Inc."]
+companies = ['"McCain Foods"', '"Cara Operations"', "Nature\'s Path", '"Olymel"', '"Purity Factories"', '"Rogers Sugar"', '"Saputo"', '"Naya Waters"', '"Sobeys"', "Daiya", "SunOpta",
+             '"Organic Meadow Cooperative"', '"Agropur"', '"Première Moisson"', '"Bothwell Cheese"', '"Dan-D Foods"', '"Maple Leaf Foods"', '"Kraft Heinz"', '"M&M Food Market"',
+             '"PepsiCo"', '"Dare Foods"', '"Flowers Foods"', '"Pinnacle Foods"', "'Reser's Fine Foods'", '"Kawartha Dairy Company"', '"Nestle"', '"Saputo Inc"', "Just Us!",
+             '"Laura Secord Chocolates"', '"Voortman Cookies"', "'Lester's Foods Ltd.'", "'Earth's Own Food Company'", '"Canyon Creek Food Company"', "Cara Operations",
+             '"Chapman"'"s"'', '"Metro Inc."']
 
 numOfRecalls = []
 secoreRecall = []
 def b():
-    for i in range(0,len(companies)):
+    for i in range(2,len(companies)):
         driver = webdriver.Chrome()
         driver.get("http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/search-recherche/result-resultat?search_text_1=maple%20leaf%20")
         search = driver.find_element_by_id("search_text_1")
@@ -28,7 +28,8 @@ def b():
             numOfRecalls.append(0)
             secoreRecall.append(0)
         else:
-            searchResults = driver.find_element_by_xpath('//*[@id="search_result_content"]/div[1]/div[2]/div[1]/span').text[0]
+            searchResultsString = driver.find_element_by_xpath('//*[@id="search_result_content"]/div[1]/div[2]/div[1]/span').text
+            searchResults = searchResultsString.split(" ", 2)[0]
             numOfRecalls.append(int(searchResults))
             if (0<int(searchResults)<=2):
                 secoreRecall.append(2)
@@ -39,8 +40,6 @@ def b():
             elif (8<int(searchResults)<=12):
                 secoreRecall.append(8)
             else: secoreRecall.append(10)
-        print(searchResults)
-        driver.quit()
     return numOfRecalls,secoreRecall
 
 
