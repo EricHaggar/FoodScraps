@@ -22,40 +22,44 @@ def findURL(query):
     return j
 
 
-def scrape(base_url, workbook, name):
+def scrape():
     
     # setting first url
-    url = base_url
+    url = ""
     driver = webdriver.Chrome()
     # logging in
     driver.get("https://www.glassdoor.com/profile/login_input.htm?userOriginHook=HEADER_SIGNIN_LINK")
     # entering username/password
     username = driver.find_element_by_name("username")
-    username.send_keys("glassdoorScraper@gmail.com")
+    username.send_keys("amham077@uottawa.ca")
     password = driver.find_element_by_name("password")
-    password.send_keys("glassdoor")
+    password.send_keys("FoodScraps")
     driver.find_element_by_xpath("//*[@class='gd-btn gd-btn-1 fill']").click()
     
-    try:
-        # go to first link
-        driver.get(url)
-        url_arr = url.split("_")
-        basic = url_arr[0]+"_P"
-        page_arr = list(url_arr[1])
-        page = ""
-        for char in page_arr:
-            if char.isdigit():
-                page += char
-        # this is the current page we are on
-        page = int(page)
-        ratings = driver.find_element_by_class_name("ratingNum").text
-        print(ratings)
+    for i in range(len(companies)):
+        try:
+            # go to first link
+            url=findURL(companies[i]+" glassdoor.ca/Overview")
+            print(url)
+            driver.get(url)
+            url_arr = url.split("_")
+            basic = url_arr[0]+"_P"
+            page_arr = list(url_arr[1])
+            page = ""
+            for char in page_arr:
+                if char.isdigit():
+                    page += char
+            # this is the current page we are on
+            page = int(page)
+            ratings = driver.find_element_by_class_name("ratingNum").text
+            print(ratings)
 
         
 
-    except NoSuchElementException:
-        workbook.save(name)
-        print("finished")
+        except NoSuchElementException:
+            workbook.save(name)
+            print("finished")
+    
 
     
 def mainScraper():
