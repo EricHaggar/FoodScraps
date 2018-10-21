@@ -95,7 +95,7 @@
 		.progress_bar {
 			margin-top: 8%;
 			height: 10px;
-			background: green;
+			background: #5fc445;
 			width: 0%;
 			-moz-transition: all 1.5s ease;
 			-moz-transition-delay: 0.2s;
@@ -129,30 +129,30 @@
 				<div class="width">
 					<div id="progressBar1" class="progress_bar"></div>	
 				</div>
-				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				<p id="rating">Based on GlassDoor and Google Reviews</p>			
 
 
 				<h3>Size Score</h3>
 				<div class="width">
 					<div id="progressBar2" class="progress_bar"></div>				
 				</div>
-				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				<p id="size">Based on the size of the company (Employees, income)</p>			
 				
 				<h3>Revenue Score</h3>
 				<div class="width">
 					<div id="progressBar3" class="progress_bar"></div>				
 				</div>
-				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				<p id="revenue">Based on the company's reliability with taxes, and revenue</p>			
 				
 				<h3>Recall Score</h3>
 				<div class="width">
 					<div id="progressBar4" class="progress_bar"></div>	
 				</div>
-				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				<p id="recall">Based on the frequency of recalls performed</p>			
 				
 				<h3 id="overall">Overall Score</h3>
 				<div id="progressBar5" class="progress_bar"></div>
-				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				<p id="overall">Based on all the previous criteria</p>			
 
     		</div>
 
@@ -164,8 +164,7 @@
     <script>
 	// Initialize and add the map
 	function initMap() {
-	  //var centerMap = {lat: 57.593864, lng: -97.307654};
-	  var centerMap = {lat: 43.64517, lng:-79.395600};
+	  var centerMap = {lat: 57.593864, lng: -97.307654};
 	  var mccainloc = {lat: 43.64517, lng:-79.395600};
 	  var natureloc = {lat: 49.168207, lng:-123.062677};
 	  var olymelloc = {lat: 45.611409, lng:-72.886129};
@@ -203,7 +202,7 @@
 
 	  // The map, centered at Uluru
 	  var map = new google.maps.Map(
-	      document.getElementById('map'), {zoom: 4, center: centerMap});
+	      document.getElementById('map'), {zoom: 3.7, center: centerMap});
 	  // The marker, positioned at Uluru
 	  var mcCain = new google.maps.Marker({position: mccainloc, map: map, title: 'McCain Foods'});
 	  var nature = new google.maps.Marker({position: natureloc, map: map, title: 'Natures Path'});
@@ -224,9 +223,6 @@
 	  var mm = new google.maps.Marker({position: mmloc, map: map, title: 'M&M Food Market'});
 	  var pepsi = new google.maps.Marker({position: pepsiloc, map: map, title: 'PepsiCo'});
 	  var dare = new google.maps.Marker({position: dareloc, map: map, title: 'Dare Foods'});
-	  var flowers = new google.maps.Marker({position: flowersloc, map: map, title: 'Flowers'});
-	  var pinnacle = new google.maps.Marker({position: pinnacleloc, map: map, title: 'Pinnacle Foods'});
-	  var reserc = new google.maps.Marker({position: reserloc, map: map, title: 'Resers Fine Foods'});
 	  var kawartha = new google.maps.Marker({position: kawarthaloc, map: map, title: 'Kawartha Dairy Company'});
 	  var nestle = new google.maps.Marker({position: nestleloc, map: map, title: 'Nestle'});
 	  var saputo = new google.maps.Marker({position: saputoloc, map: map, title: 'Saputo Inc'});
@@ -261,9 +257,6 @@
 	   	mm.setAnimation(null); 
 	   	pepsi.setAnimation(null); 
 	   	dare.setAnimation(null); 
-	   	flowers.setAnimation(null); 
-	   	pinnacle.setAnimation(null); 
-	   	reserc.setAnimation(null); 
 	   	kawartha.setAnimation(null); 
 	   	nestle.setAnimation(null); 
 	   	saputo.setAnimation(null); 
@@ -294,32 +287,32 @@
 	  	map.setCenter(mcCain.getPosition());
 
 	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "70%";
-	  	  progress.style.backgroundColor = "#fffa70";
+	  	  progress.style.width = "25%";
+	  	  progress.style.backgroundColor = "#d5fc5f";
 
 	  	  ;
 
 	  	  var progress = document.getElementById("progressBar2");
 	  	  progress.style.width = "65%";
-	  	  progress.style.backgroundColor = "green";
+	  	  progress.style.backgroundColor = "#ffce52";
 
 	  	  ;
 
 	  	  var progress = document.getElementById("progressBar3");
 	  	  progress.style.width = "20%";
-	  	  progress.style.backgroundColor = "green";
+	  	  progress.style.backgroundColor = "#8fde51";
 
 	  	  ;
 
 	  	  var progress = document.getElementById("progressBar4");
 	  	  progress.style.width = "90%";
-	  	  progress.style.backgroundColor = "green";
+	  	  progress.style.backgroundColor = "#ff3f1e";
 
 	  	  ;
 
 	  	  var progress = document.getElementById("progressBar5");
 	  	  progress.style.width = "64%";
-	  	  progress.style.backgroundColor = "green";
+	  	  progress.style.backgroundColor = "#ff9d40";
 		
 	  });
 
