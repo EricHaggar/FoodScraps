@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
     <style>
        /* Set the size of the div element that contains the map */
       #map {
@@ -19,11 +20,12 @@
        #infoInside {
        	background-color: #f2f2f2;
        	width: 100%;
-       	height: 100%;
+       	height: 110vh;
        }
 
        h1 {
        	font-family: 'Roboto', sans-serif;
+       	font-size: 1.2em;
        	color: #515151;
        	text-align: center;
        	line-height: 1.6;
@@ -63,12 +65,25 @@
 
        h2 {
        	margin: 10px 0px 0px 0px;
+       	font-weight: 400;
+       }
+
+       h3 {
+       	margin: 10px 0px 0px 0px;
+       	font-family: 'Roboto', sans-serif;
+       	font-size: 1em;
+       	color: #515151;
+       	font-weight: 300;
+
        }
 
        p {
-       	text-align: left;
+       	font-style: italic;
+       	text-align: center;
        	font-family: 'Roboto', sans-serif;
-       	font-size: 0.9em;
+       	font-size: 0.6em;
+       	margin: 0;
+       	font-weight: 300;
        	padding: 2%;
        }
 
@@ -76,6 +91,29 @@
        	visibility: hidden;
        	z-index: 1;
        }
+
+		.progress_bar {
+			margin-top: 8%;
+			height: 10px;
+			background: green;
+			width: 0%;
+			-moz-transition: all 1.5s ease;
+			-moz-transition-delay: 0.2s;
+			-webkit-transition: all 1.5s ease;
+			-webkit-transition-delay: 0.2s;
+			transition: all 1.5s ease;
+			transition-delay: 0.2s;
+		}       
+
+		.width {
+			margin: 0 auto;
+			width: 70%;
+		}
+
+		#overall {
+			font-weight: 400;
+		}
+
  
     </style>
   </head>
@@ -84,97 +122,209 @@
     <div id="info">
     	<div id="infoInside">
     		
-    		<h1 class="ptop">CANDEV Meat Producers</h1>
+    		<h1 class="ptop">CANDEV Food Producers</h1>
     		<div id="marker" class="detail">
-    			<h2 id="name">Abu Zain Company</h2>
-    			<p id="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur non sapien a vehicula. Aliquam hendrerit libero ut mi iaculis, ac mattis sem dignissim. Praesent lobortis justo sed felis condimentum, id lacinia massa lobortis.</p>
-				<h2>Severity Percentage</h2>
-				<h4 id="severity">86%</h4>
-				<h2>Reasons:</h2>
-    			<p id="reasons">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur non sapien a vehicula. Aliquam hendrerit libero ut mi iaculis, ac mattis sem dignissim.</p>
+    			<h2 id="name"></h2>
+				<h3>Rating Score</h3>
+				<div class="width">
+					<div id="progressBar1" class="progress_bar"></div>	
+				</div>
+				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+
+
+				<h3>Size Score</h3>
+				<div class="width">
+					<div id="progressBar2" class="progress_bar"></div>				
+				</div>
+				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				
+				<h3>Revenue Score</h3>
+				<div class="width">
+					<div id="progressBar3" class="progress_bar"></div>				
+				</div>
+				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				
+				<h3>Recall Score</h3>
+				<div class="width">
+					<div id="progressBar4" class="progress_bar"></div>	
+				</div>
+				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+				
+				<h3 id="overall">Overall Score</h3>
+				<div id="progressBar5" class="progress_bar"></div>
+				<p>Rating based on tthrgfdg fdjkg hdfgh </p>			
+
     		</div>
 
     	</div>
     </div>
     <div id="map"></div>
+
+
     <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var centerMap = {lat: 57.593864, lng: -97.307654};
-  var location1 = {lat: 45.3827, lng:-75.6959}
-  var location2 = {lat: 45.259519, lng:-76.083369}
-  var location3 = {lat: 49.178831, lng:-84.488888}
-  var location4 = {lat: 51.928007, lng:-111.865625}
-  var location5 = {lat: 49.570825, lng:-71.263177}
-  var location6 = {lat: 58.045328, lng:-129.469366}
+	// Initialize and add the map
+	function initMap() {
+	  //var centerMap = {lat: 57.593864, lng: -97.307654};
+	  var centerMap = {lat: 43.64517, lng:-79.395600};
+	  var mccainloc = {lat: 43.64517, lng:-79.395600};
+	  var natureloc = {lat: 49.168207, lng:-123.062677};
+	  var olymelloc = {lat: 45.611409, lng:-72.886129};
+	  var purityloc = {lat: 49.213943, lng:-57.350243};
+	  var rogersSugarloc = {lat: 45.547400, lng: -73.533280};
+	  var sobeyesloc = {lat: 45.418900, lng:-75.693200};
+	  var nayaloc = {lat: 45.550410, lng: -73.542350};
+	  var daiyaloc = {lat: 49.259700, lng: -123.033680};
+	  var sunoptaloc = {lat: 43.701340, lng: -79.798380};
+	  var organicloc = {lat: 43.493760, lng: -80.200700};
+	  var agropurloc = {lat:45.494420, lng: -75.477290};
+	  var premiereloc= {lat: 45.382940, lng:-74.013040};
+	  var bothwellloc =  {lat: 49.593060, lng: -96.889920};
+	  var dandloc= {lat:49.124540 , lng: -123.096650};
+	  var mapleloc =  {lat: 49.866210, lng: -97.162820};
+	  var kraftloc =  {lat: 43.758650, lng: -79.347050};
+	  var mmloc=  {lat:43.596790, lng: -79.747520};
+	  var pepsiloc =  {lat: 45.414730, lng: -75.636860};
+	  var dareloc=  {lat: 43.431160 , lng: -80.448200};
+	  var flowersloc=  {lat: 30.810660, lng: -83.936910};
+	  var pinnacleloc=  {lat: 39.864120, lng: -74.996780};
+	  var reserloc =  {lat: 39.036290,lng: -95.633230};
+	  var kawarthaloc=  {lat: 44.381720, lng: -79.705170};
+	  var nestleloc =  {lat: 43.760830 , lng: -79.412170};
+	  var saputoloc=  {lat: 46.373749 , lng: -75.981689};
+	  var justusloc =  {lat: 45.105130, lng: -64.293470};
+	  var lauraloc=  {lat: 46.816650 , lng: -71.273610};
+	  var voortmanloc =  {lat: 43.380540, lng: 79.776040};
+	  var lesterloc=  {lat: 45.578920, lng: -73.728460};
+	  var earthloc =  {lat: 49.279200, lng:-123.116220};
+	  var canyonloc=  {lat: 53.490280, lng: -113.457390};
+	  var caraloc =  {lat: 43.819450, lng: -79.542839};
+	  var chapmanloc =  {lat: 44.316750, lng: -80.645560};
+	  var metroloc =  {lat: 45.411280, lng: -75.647350};
+
+	  // The map, centered at Uluru
+	  var map = new google.maps.Map(
+	      document.getElementById('map'), {zoom: 4, center: centerMap});
+	  // The marker, positioned at Uluru
+	  var mcCain = new google.maps.Marker({position: mccainloc, map: map, title: 'McCain Foods'});
+	  var nature = new google.maps.Marker({position: natureloc, map: map, title: 'Natures Path'});
+	  var olymel = new google.maps.Marker({position: olymelloc, map: map, title: 'Olymel'});
+	  var purity = new google.maps.Marker({position: purityloc, map: map, title: 'Purity Factories'});
+	  var rogersSugar = new google.maps.Marker({position: rogersSugar, map: map, title: 'rogersSugar'});
+	  var sobeyes = new google.maps.Marker({position: sobeyesloc, map: map, title: 'Sobeyes'});
+	  var naya = new google.maps.Marker({position: nayaloc, map: map, title: 'Naya Waters'});
+	  var daiya = new google.maps.Marker({position: daiyaloc, map: map, title: 'Daiya'});
+	  var sunopta = new google.maps.Marker({position: sunoptaloc, map: map, title: 'SunOpta'});
+	  var organic = new google.maps.Marker({position: organicloc, map: map, title: 'Organic Meadow Cooperative'});
+	  var agropur = new google.maps.Marker({position: agropurloc, map: map, title: 'Agropur'});
+	  var premiere = new google.maps.Marker({position: premiereloc, map: map, title: 'Première Moisson'});
+	  var bothwell = new google.maps.Marker({position: bothwellloc, map: map, title: 'Bothwell Cheese'});
+	  var dand = new google.maps.Marker({position: dareloc, map: map, title: 'Dan-D Foods'});
+	  var maple = new google.maps.Marker({position: mapleloc, map: map, title: 'Maple Leaf Foods'});
+	  var kraft = new google.maps.Marker({position: kraftloc, map: map, title: 'Kraft Heinz'});
+	  var mm = new google.maps.Marker({position: mmloc, map: map, title: 'M&M Food Market'});
+	  var pepsi = new google.maps.Marker({position: pepsiloc, map: map, title: 'PepsiCo'});
+	  var dare = new google.maps.Marker({position: dareloc, map: map, title: 'Dare Foods'});
+	  var flowers = new google.maps.Marker({position: flowersloc, map: map, title: 'Flowers'});
+	  var pinnacle = new google.maps.Marker({position: pinnacleloc, map: map, title: 'Pinnacle Foods'});
+	  var reserc = new google.maps.Marker({position: reserloc, map: map, title: 'Resers Fine Foods'});
+	  var kawartha = new google.maps.Marker({position: kawarthaloc, map: map, title: 'Kawartha Dairy Company'});
+	  var nestle = new google.maps.Marker({position: nestleloc, map: map, title: 'Nestle'});
+	  var saputo = new google.maps.Marker({position: saputoloc, map: map, title: 'Saputo Inc'});
+	  var justus = new google.maps.Marker({position: justusloc, map: map, title: 'Just Us!'});
+	  var laura = new google.maps.Marker({position: lauraloc, map: map, title: 'Laura Second Chocolates'});
+	  var voortman = new google.maps.Marker({position: voortmanloc, map: map, title: 'Voortman Cookies'});
+	  var lester = new google.maps.Marker({position: lesterloc, map: map, title: 'Lesters Foods Ltd.'});
+	  var earth = new google.maps.Marker({position: earthloc, map: map, title: 'Earths Own Food Company'});
+	  var canyon = new google.maps.Marker({position: canyonloc, map: map, title: 'Canyon Creek Food Company'});
+	  var cara = new google.maps.Marker({position: caraloc, map: map, title: 'Cara Operations'});
+	  var chapman = new google.maps.Marker({position: chapmanloc, map: map, title: 'Chapmans'});
+	  var metro = new google.maps.Marker({position: metroloc, map: map, title: 'Metro Inc'});
 
 
+	  function clearAnimation() {
+	   	mcCain.setAnimation(null);
+	   	nature.setAnimation(null);
+	   	olymel.setAnimation(null);
+	   	purity.setAnimation(null);
+	   	rogersSugar.setAnimation(null); 
+	   	sobeyes.setAnimation(null); 
+	   	naya.setAnimation(null); 
+	   	daiya.setAnimation(null); 
+	   	sunopta.setAnimation(null); 
+	   	organic.setAnimation(null); 
+	   	agropur.setAnimation(null); 
+	   	premiere.setAnimation(null); 
+	   	bothwell.setAnimation(null); 
+	   	dand.setAnimation(null); 
+	   	maple.setAnimation(null); 
+	   	kraft.setAnimation(null); 
+	   	mm.setAnimation(null); 
+	   	pepsi.setAnimation(null); 
+	   	dare.setAnimation(null); 
+	   	flowers.setAnimation(null); 
+	   	pinnacle.setAnimation(null); 
+	   	reserc.setAnimation(null); 
+	   	kawartha.setAnimation(null); 
+	   	nestle.setAnimation(null); 
+	   	saputo.setAnimation(null); 
+	   	justus.setAnimation(null); 
+	   	laura.setAnimation(null); 
+	   	voortman.setAnimation(null); 
+	   	lester.setAnimation(null); 
+	   	earth.setAnimation(null); 
+	   	canyon.setAnimation(null); 
+	   	cara.setAnimation(null); 
+	   	chapman.setAnimation(null); 
+	   	metro.setAnimation(null); 
+	  }
 
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: centerMap});
-  // The marker, positioned at Uluru
-  var marker1 = new google.maps.Marker({position: location1, map: map, title: 'Click to zoom'});
-  var marker2 = new google.maps.Marker({position: location2, map: map});
-  var marker3 = new google.maps.Marker({position: location3, map: map});
-  var marker4 = new google.maps.Marker({position: location4, map: map});
-  var marker5 = new google.maps.Marker({position: location5, map: map});
-  var marker6 = new google.maps.Marker({position: location6, map: map});
+	  mcCain.addListener('click', function() {
+	   	clearAnimation();
+	   	mcCain.setAnimation(google.maps.Animation.BOUNCE);
+
+	  	var x = document.getElementById("marker");
+	  	var name = document.getElementById("name");
+	  	var desc = document.getElementById("desc");
+	  	var severity = document.getElementById("severity");
+	  	var reasons = document.getElementById("reasons");
+
+	  	x.style.visibility = "visible";
+	  	name.innerHTML = "McCain Foods";
+	  	map.setZoom(8);
+	  	map.setCenter(mcCain.getPosition());
+
+	  	  var progress = document.getElementById("progressBar1");
+	  	  progress.style.width = "70%";
+	  	  progress.style.backgroundColor = "#fffa70";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar2");
+	  	  progress.style.width = "65%";
+	  	  progress.style.backgroundColor = "green";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar3");
+	  	  progress.style.width = "20%";
+	  	  progress.style.backgroundColor = "green";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar4");
+	  	  progress.style.width = "90%";
+	  	  progress.style.backgroundColor = "green";
+
+	  	  ;
+
+	  	  var progress = document.getElementById("progressBar5");
+	  	  progress.style.width = "64%";
+	  	  progress.style.backgroundColor = "green";
+		
+	  });
 
 
-
-  marker1.addListener('click', function() {
-   	marker2.setAnimation(null);
-   	marker3.setAnimation(null);
-   	marker4.setAnimation(null);
-   	marker5.setAnimation(null);
-   	marker6.setAnimation(null);
-
-   	marker1.setAnimation(google.maps.Animation.BOUNCE);
-  	var x = document.getElementById("marker");
-  	var name = document.getElementById("name");
-  	var desc = document.getElementById("desc");
-  	var severity = document.getElementById("severity");
-  	var reasons = document.getElementById("reasons");
-
-  	x.style.visibility = "visible";
-  	name.innerHTML = "TITLE1";
-  	desc.innerHTML = "DESCRIPTION1";
-  	severity.innerHTML = "69%";
-  	reasons.innerHTML = "THESE ARE REASONS 1";
-  	map.setZoom(8);
-  	map.setCenter(marker1.getPosition());
-  });
-
-   marker2.addListener('click', function() {
-   	marker2.setAnimation(null);
-   	marker3.setAnimation(null);
-   	marker4.setAnimation(null);
-   	marker5.setAnimation(null);
-   	marker6.setAnimation(null);
-
-   	marker1.setAnimation(google.maps.Animation.BOUNCE);
-   	
-   	marker2.setAnimation(google.maps.Animation.BOUNCE);
-  	var x = document.getElementById("marker");
-  	var name = document.getElementById("name");
-  	var desc = document.getElementById("desc");
-  	var severity = document.getElementById("severity");
-  	var reasons = document.getElementById("reasons");
-
-  	x.style.visibility = "visible";
-  	name.innerHTML = "TITLE2";
-  	desc.innerHTML = "DESCRIPTION2";
-  	severity.innerHTML = "99%";
-  	reasons.innerHTML = "THESE ARE REASONS 2";
-  	map.setZoom(8);
-  	map.setCenter(marker1.getPosition());
-  });
-
-
-
-}
+	}
     </script>
     <!--Load the API from the specified URL
     * The async attribute allows the browser to render the page while the API loads
