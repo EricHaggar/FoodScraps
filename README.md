@@ -1,10 +1,8 @@
 # CandDev FoodScraps
 
 This tool is to provide an innovative solution, which is to help the Canadian Food Inspection Agency (CFIA) collect, organize and explore publicly accessible data about agriculture and agri-food businesses.
-Successfully devloped a strategy, using Python (beautiful soup), Java Script, HTML, CSS and Google Maps API, based on a formula that uses all gathered data to provide an overall score for each company. 
+We successfully devloped a strategy, using Python (selenium), JavaScript, HTML, CSS and Google Maps API, based on a formula that uses all gathered data to provide an overall score for each company. 
 
-
-![GUI](GUI_Screenshot.jpg)
 
 
 ## Getting Started 
