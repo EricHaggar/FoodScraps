@@ -2,8 +2,6 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium import *
 import xlwt
-from bs4 import BeautifulSoup
-
 
 def scrape(company):
     recallScore = 0

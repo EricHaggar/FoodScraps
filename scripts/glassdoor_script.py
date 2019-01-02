@@ -9,13 +9,12 @@ def findURL(query):
         from googlesearch import search 
     except ImportError:  
         print("No module named 'google' found") 
-  
-        # to search 
-      
-    for j in search(query, tld="ca", lang='en', num=2, stop=1, pause=1): 
-        url = j
+        
+    # to search 
+    for i in search(query, tld = "ca", lang = 'en', num = 2, stop = 1, pause = 1): 
+        url = i
 
-    return j
+    return i
 
 
 def scrape(url,name):
