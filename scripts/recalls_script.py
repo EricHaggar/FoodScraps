@@ -6,14 +6,8 @@ from bs4 import BeautifulSoup
 
 
 
-companies = ['"McCain Foods"', '"Cara Operations"', '"'+"Nature's Path"+'"', '"Purity Factories"', '"Saputo"', '"Naya Waters"', '"Sobeys"', "Daiya", "SunOpta",
-             '"Organic Meadow Cooperative"', '"Agropur"', '"Première Moisson"', '"Bothwell Cheese"', '"Dan-D Foods"', '"Maple Leaf Foods"', '"Kraft Heinz"', '"M&M Food Market"',
-             '"PepsiCo"', '"Dare Foods"', '"Flowers Foods"', '"Pinnacle Foods"', '"'+"Reser's Fine Foods"+'"', '"Kawartha Dairy Company"', '"Nestle"', '"Saputo Inc"', "Just Us!",
-             '"Laura Secord Chocolates"', '"Voortman Cookies"', '"'+"Lester's Foods Ltd."+'"', '"'+"Earth's Own Food Company"+'"', '"Canyon Creek Food Company"', "Cara Operations",
-             '"'+"Chapman's"+'"', '"Metro Inc."']
-numOfRecalls = []
-secoreRecall = []
-def b():
+scoreRecall = []
+def scraps( companies):
     for i in range(2,len(companies)):
         driver = webdriver.Chrome()
         driver.get("http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/search-recherche/result-resultat?search_text_1=maple%20leaf%20")
@@ -24,24 +18,21 @@ def b():
         searchResults = driver.find_element_by_xpath('//*[@id="search_result_content"]/div[1]/div[2]/div[1]/span').text
 
         if (searchResults == '0 items found for ' + companies[i]):
-            numOfRecalls.append(0)
-            secoreRecall.append(0)
+            scoreRecall.append(0)
         else:
             searchResultsString = driver.find_element_by_xpath('//*[@id="search_result_content"]/div[1]/div[2]/div[1]/span').text
             searchResults = searchResultsString.split(" ", 2)[0]
-            numOfRecalls.append(int(searchResults))
-            if (0<int(searchResults)<=2):
-                secoreRecall.append(2)
-            elif (2<int(searchResults)<=5):
-                secoreRecall.append(4)
-            elif (5<int(searchResults)<=8):
-                secoreRecall.append(6)
-            elif (8<int(searchResults)<=12):
-                secoreRecall.append(8)
-            else: secoreRecall.append(10)
+            
+            if (searchResults<12):
+                scoreRecall.append(10)
+            else:
+                scoreRecall.append(((searchResults%3)+1)*2)
+
+                
+
         driver.quit()
 
-    return numOfRecalls,secoreRecall
+    return scoreRecall
 
 
 
