@@ -7,7 +7,8 @@ We successfully devloped a strategy, using Python (selenium), JavaScript, HTML, 
 
 ## Getting Started 
 
-Naviaget through the github folder, press on the website folder and download index.html
+Navigate through the github folder, press on the website folder and download index.html.
+Below is the link of where the folder is stored.
 
 ```
 https://github.com/EricHaggar/FoodScraps/blob/master/website/index.html
@@ -21,4 +22,5 @@ Run the script and it will take you to the website.
 
 1. Press on the desired company to show the scores. 
 2. Once pressed on the company, 5 progress bars will appear with different grading criterias.
+
 
