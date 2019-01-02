@@ -7,15 +7,23 @@ We successfully devloped a strategy, using Python (selenium), JavaScript, HTML, 
 
 ## Getting Started 
 
-Navigate through the github folder, press on the website folder and download index.html.
-Below is the link of where the folder is stored.
+clone the repository
 
 ```
-https://github.com/EricHaggar/FoodScraps/blob/master/website/index.html
+git clone https://github.com/EricHaggar/FoodScraps.git
 ```
 
-Run the script and it will take you to the website.
+change to the website directory
 
+```
+cd website
+```
+
+run the website on local host
+
+```
+start index.html
+```
 
 
 ## Web Instructions
