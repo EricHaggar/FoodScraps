@@ -9,7 +9,7 @@ def findURL(query):
         from googlesearch import search 
     except ImportError:  
         print("No module named 'google' found") 
-        
+
     # to search 
     for i in search(query, tld = "ca", lang = 'en', num = 2, stop = 1, pause = 1): 
         url = i
@@ -96,14 +96,12 @@ def scrape(url,name):
             revenueScore = 0
         else: revenueScore = 8
 
-        overallScore = revenueScore*revenueWeight+sizeScore*sizeWeight+ratingScore*ratingWeight
-
     except NoSuchElementException:
         print("finished")
 
     driver.quit()
     
-    return overallScore,ratingScore, sizeScore, revenueScore
+    return ratingScore, sizeScore, revenueScore
 
 
         

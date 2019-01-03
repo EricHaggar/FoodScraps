@@ -1,5 +1,6 @@
 import glassdoor_script
 import recalls_script
+import coordinates_script
 import pyrebase
 
 # Add firebase connection here!
@@ -23,6 +24,7 @@ companies = ['"McCain Foods"', '"Cara Operations"', '"'+"Nature's Path"+'"', '"P
 overallScore = [] 
 glassdoorScores = []
 recallScores = []
+coordinates = []
 
 
 for i in range(0,len(companies)):
@@ -30,16 +32,9 @@ for i in range(0,len(companies)):
     glassdoorScores.append(glassdoor_script.scrape(url,companies[i]))
     recallScores.append(recalls_script.scrape(companies[i]))
     overallScore.append((recallScores[i]*0.7 + glassdoorScores[i][0]*0.3)*10)
-    latitude = -5 
-    longitude = 10
-    print(overallScore)
+    coordinates.append(coordinates_script.scrape(companies[i]))
 
-    data = {"latitude": -10, "longitude": 4, "reviewScore": 5, "sizeScore": 6, "revenueScore": 2, "recallScore": 34, "overallScore": 15 }
+'''  data = {"latitude": coordinates[i][0], "longitude": coordinates[i][1], "reviewScore": glassdoorScores[i][0], "sizeScore": glassdoorScores[i][1], "revenueScore": glassdoorScores[i][2], "recallScore": recallScores[i], "overallScore": overallScore[i] }
     database.child("companies").child(companies[i]).remove()
     database.child("companies").child(companies[i]).set(data)
-
-
-
-
-
-
+ '''

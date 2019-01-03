@@ -20,8 +20,8 @@ def scrape(company):
     else:
         searchResultsString = driver.find_element_by_xpath(
         '//*[@id="search_result_content"]/div[1]/div[2]/div[1]/span').text
+
         searchResults = int(searchResultsString.split(" ", 2)[0])
-        print(searchResults)
         
         if ((searchResults) < 12):
             recallScore = 10
