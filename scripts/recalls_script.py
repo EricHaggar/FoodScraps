@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium import *
-import xlwt
 
 def scrape(company):
     recallScore = 0

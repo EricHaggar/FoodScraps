@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium import *
-import xlwt
 
 def findURL(query):
 
@@ -11,10 +10,11 @@ def findURL(query):
         print("No module named 'google' found") 
 
     # to search 
-    for i in search(query, tld = "ca", lang = 'en', num = 2, stop = 1, pause = 1): 
-        url = i
+    found = ""
+    for url in search(query, tld = "ca", lang = 'en', num = 2, stop = 1, pause = 1): 
+        found = url
 
-    return i
+    return found
 
 
 def scrape(url,name):
