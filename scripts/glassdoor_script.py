@@ -53,18 +53,17 @@ def scrape(url,name):
         page = int(page)
 
         ratings = driver.find_element_by_class_name("ratingNum").text
-        if (ratings == "N/A"):
+        print(ratings)
+        if (ratings == "N/A" or ratings == "5"):
             ratingWeight = 0
             ratingScore = 0
-        elif (ratings == "5"):
-            ratingScore = 0
-        elif (ratings == "4"):
+        elif ("4" <= ratings < "5"):
             ratingScore = 2
-        elif (ratings == "3"):
+        elif ("3" <= ratings < "4"):
             ratingScore = 4
-        elif (ratings == "2"):
+        elif ("2" <= ratings < "3"):
             ratingScore = 6
-        elif (ratings == "1"):
+        elif ("1" <= ratings < "2"):
             ratingScore = 8
         elif (ratings == "0"):
             ratingScore = 10
