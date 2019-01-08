@@ -19,9 +19,6 @@ def findURL(query):
 
 def scrape(url,name):
 
-    ratingWeight = 0.1
-    sizeWeight = 0.1
-    revenueWeight = 0.1
     revenueScore = 0
     sizeScore = 0
     ratingScore = 0    
@@ -40,7 +37,6 @@ def scrape(url,name):
     
     try:
         # go to first link
-        print(url)
         driver.get(url)
         url_arr = url.split("_")
         basic = url_arr[0]+"_P"
@@ -53,9 +49,7 @@ def scrape(url,name):
         page = int(page)
 
         ratings = driver.find_element_by_class_name("ratingNum").text
-        print(ratings)
         if (ratings == "N/A" or ratings == "5"):
-            ratingWeight = 0
             ratingScore = 0
         elif ("4" <= ratings < "5"):
             ratingScore = 2
