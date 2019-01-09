@@ -1,7 +1,14 @@
-# CandDev FoodScraps
+# FoodScraps
 
-This tool is to provide an innovative solution, which is to help the Canadian Food Inspection Agency (CFIA) collect, organize and explore publicly accessible data about agriculture and agri-food businesses.
-We successfully devloped a strategy, using Python (selenium), JavaScript, HTML, CSS and Google Maps API, based on a formula that uses all gathered data to provide an overall score for each company. 
+FoodScraps is a webscraping tool designed at the CanDEV Data Challenge (2018) for the Canadian Food Inspection Agency (CFIA). Foodscraps is a solution for the CFIA to explore publicly accessible data about agriculture and agri-food businesses within Canada or exporting to Canada. The scraped data is used to develop a scoring system to know which companies to flag for inspection for a potential uncompliance of CFIA regulations. The developed strategy uses **Python (Selenium Webdriver)** for webscraping the data and coming up with a score for each company. The scores are then displayed on an interactive webpage using the **Google Maps API** and **Firebase Realtime Database**.
+
+## Table Of Contents
+
+- [FoodScraps](#foodscraps)
+  * [Getting Started](#getting-started)
+    + [Webscraping](#webscraping)
+    + [Website](#website)
+
 
 
 
@@ -13,22 +20,73 @@ clone the repository
 git clone https://github.com/EricHaggar/FoodScraps.git
 ```
 
-change to the website directory
+change to the project directory
 
 ```
-cd website
+cd FoodScraps
 ```
 
-run the website on local host
+### Webscraping Instructions
+
+Navigate to the scripts directory
 
 ```
-start index.html
+cd scripts
 ```
 
+If Python is not installed on your machine, install it before proceeding
 
-## Web Instructions
+```
+https://www.python.org/downloads/
+```
 
-1. Press on the desired company to show the scores. 
-2. Once pressed on the company, 5 progress bars will appear with different grading criterias.
+If it is installed, ensure the Python version being used is 3.7.0 or higher
+
+```
+python --version
+```
+Then install all dependencies for webscraping and Firebase using pip
+
+```
+pip install selenium
+```
+```
+pip install chromedriver
+```
+```
+pip install google
+```
+```
+pip install pyrebase
+```
+
+Create a free Firebase account and create a realtime database
+
+```
+https://firebase.google.com/
+```
+
+Navigate to `master.py` and replace with your Firebase database information
+
+```
+config = {
+
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": "",
+    "projectId": "",
+    "storageBucket": ""
+}
+```
+
+The scripts are ready to be run in the background!
+
+```
+python master.py
+```
+
+  > _More to be added..._
+
+
 
 
