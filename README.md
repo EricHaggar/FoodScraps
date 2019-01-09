@@ -4,13 +4,9 @@ FoodScraps is a webscraping tool designed at the CanDEV Data Challenge (2018) fo
 
 ## Table Of Contents
 
-- [FoodScraps](#foodscraps)
-  * [Getting Started](#getting-started)
-    + [Webscraping](#webscraping)
-    + [Website](#website)
 
-
-
+- [Getting Started](#getting-started)
+  * [Webscraping Instructions](#webscraping-instructions)
 
 ## Getting Started 
 
