@@ -56,13 +56,13 @@ pip install google
 pip install pyrebase
 ```
 
-Create a free Firebase account and create a realtime database
+Create a free Firebase account and create an empty realtime database with read and write permissions
 
 ```
 https://firebase.google.com/
 ```
 
-Navigate to `master.py` and replace with your Firebase database information
+Navigate to `master.py` and replace the empty strings in `config` with your Firebase database information
 
 ```
 config = {
