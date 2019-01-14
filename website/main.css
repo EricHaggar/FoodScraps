@@ -1,0 +1,63 @@
+/* Set the size of the div element that contains the map */
+#map {
+  height: 96vh;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+  float: left;
+}
+
+#intro {
+  background-color: rgba(239, 239, 239, 0.68);
+}
+
+#rating {
+    font-size: 0.7rem;
+    padding: 0px;
+    margin-top: -12px;
+}
+
+#container {
+  margin: 20px;
+  width: 400px;
+  height: 8px;
+}
+
+.detail p {
+  font-size: 0.8rem;
+}
+
+#marker {
+  visibility: hidden;
+  z-index: 1;
+}
+
+.progress_bar {
+  margin-top: -12px;
+  height: 10px;
+  background: #5fc445;
+  width: 0%;
+  -moz-transition: all 1.5s ease;
+  -moz-transition-delay: 0.2s;
+  -webkit-transition: all 1.5s ease;
+  -webkit-transition-delay: 0.2s;
+  transition: all 1.5s ease;
+  transition-delay: 0.2s;
+}
+
+.width {
+  margin: 0 auto;
+  width: 70%;
+}
+
+#overall {
+  font-weight: 400;
+}
+
+#instructions p {
+  margin: 0;
+}
+
+#instrucions {
+  margin-top: -20px;
+}

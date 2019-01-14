@@ -1,610 +1,153 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-  <head>
-  	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-    <style>
-       /* Set the size of the div element that contains the map */
-      #map {
-        height: 96vh;  /* The height is 400 pixels */
-        width: 75%;  /* The width is the width of the web page */
-        float: left;
-       }
 
-       #info {
-       	height: 96vh;
-       	width: 21%;
-       	float: right;
-       	padding: 0% 2% 2% 1%;
-       }
+<head>
+	<title>Story by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
 
-       #infoInside {
-       	background-color: #f2f2f2;
-       	width: 100%;
-       	height: 110vh;
-       }
+<body class="is-preload">
 
-       h1 {
-       	font-family: 'Roboto', sans-serif;
-       	font-size: 1.2em;
-       	color: #515151;
-       	text-align: center;
-       	line-height: 1.6;
-       	font-weight: 300;
-       }
+	<!-- Wrapper -->
+	<div id="wrapper" class="divided">
 
-       .ptop {
-       	padding-top: 30px;
-       }
+		<!-- One -->
+		<section class="banner style2 orient-center content-align-center image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+			<div class="content" id="intro">
+				<h1>CanDev FoodScraps</h1>
+				<p>A solution to the CanDev CFIA Hackathon challenge that gathers data from several companies, provides a score based on compliant criteria, and visualizes the gathered data on a map.</p>
+				<h2>How to use it</h2>
+				<p>Simply click on a marker on the map to show more details of that specific company.</p>
+				<ul class="actions stacked">
+					<li><a href="#main" class="button primary smooth-scroll">Get Started</a></li>
+				</ul>
 
-       h2 {
-       	font-family: 'Roboto', sans-serif;
-       	font-size: 1.5em;
-       	color: #515151;
-       	text-align: center;
-       	line-height: 1.6;
-       	font-weight: 500;
-       }
-
-       .detail {
-       	background-color: #dddddd;
-       	width: 80%;
-       	height: 70%;
-       	text-align: center;
-       	padding: 3%;
-       	margin: 0 auto;
-       	-webkit-border-radius: 20px;
-		-moz-border-radius: 20px;
-		border-radius: 20px;
-       }
-
-       h4 {
-       	font-family: 'Roboto', sans-serif;
-       	font-size: 2em;
-       	margin: 0px;
-       }
-
-       h2 {
-       	margin: 10px 0px 0px 0px;
-       	font-weight: 400;
-       }
-
-       h3 {
-       	margin: 10px 0px 0px 0px;
-       	font-family: 'Roboto', sans-serif;
-       	font-size: 1em;
-       	color: #515151;
-       	font-weight: 300;
-
-       }
-
-       p {
-       	font-style: italic;
-       	text-align: center;
-       	font-family: 'Roboto', sans-serif;
-       	font-size: 0.6em;
-       	margin: 0;
-       	font-weight: 300;
-       	padding: 2%;
-       }
-
-       #marker {
-       	visibility: hidden;
-       	z-index: 1;
-       }
-
-		.progress_bar {
-			margin-top: 8%;
-			height: 10px;
-			background: #5fc445;
-			width: 0%;
-			-moz-transition: all 1.5s ease;
-			-moz-transition-delay: 0.2s;
-			-webkit-transition: all 1.5s ease;
-			-webkit-transition-delay: 0.2s;
-			transition: all 1.5s ease;
-			transition-delay: 0.2s;
-		}       
-
-		.width {
-			margin: 0 auto;
-			width: 70%;
-		}
-
-		#overall {
-			font-weight: 400;
-		}
-
-		#instructions p {
-			margin: 0;
-		}
-
-		#instrucions {
-			margin-top: -20px;
-		}
-
-    </style>
-  </head>
-  <body>
-    <!--The div element for the map -->
+			</div>
+			<div class="image">
+				<img src="images/background2.jpg" alt="" />
+			</div>
+		</section>
 
 
-    <div id="info">
-    	<div id="infoInside">
-    	
-    		<h1 class="ptop">CANDEV Food Producers</h1>
-    		<div id="marker" class="detail">
-    			<h2 id="name"></h2>
-				<h3>Review Score</h3>
-				<div class="width">
-					<div id="progressBar1" class="progress_bar"></div>	
+
+	</div>
+
+	<div class="fluid-container mt-5 text-center" id="main">
+		<div class="col-lg-12">
+			<div class="row">
+				<div class="col-lg-9">
+					<div id="map"></div>
 				</div>
-				<p id="rating">Based on GlassDoor and Google Reviews</p>			
+				<div class="col-lg-3">
 
+		      <div id="marker" class="detail">
+		        <h2 id="name"></h2>
+		        <h4>Review Score</h4>
+		        <div class="width">
+		          <div id="reviewScore" class="progress_bar"></div>
+		        </div>
+		        <p><em>Based on GlassDoor and Google Reviews</em></p>
 
-				<h3>Size Score</h3>
-				<div class="width">
-					<div id="progressBar2" class="progress_bar"></div>				
+		        <h4>Size Score</h4>
+		        <div class="width">
+		          <div id="progressBar2" class="progress_bar"></div>
+		        </div>
+		        <p id="size"><em>Based on the size of the company<br>(Employees, income)</em></p>
+
+		        <h4>Revenue Score</h4>
+		        <div class="width">
+		          <div id="progressBar3" class="progress_bar"></div>
+		        </div>
+		        <p id="revenue"><em>Based on the company's reliability with taxes, and revenue</em></p>
+
+		        <h4>Recall Score</h4>
+		        <div class="width">
+		          <div id="progressBar4" class="progress_bar"></div>
+		        </div>
+		        <p id="recall"><em>Based on the frequency of recalls performed</em></p>
+
+		        <h4 id="overall">Overall Score</h4>
+		        <div id="progressBar5" class="progress_bar"></div>
+		        <p id="overall"><em>Based on all the criteria above</em></p>
+
+					<!--
+					<h2>McCain Foods</h2>
+					<h3>Review Score</h3>
+					<p id="rating">Based on GlassDoor and Google Reviews</p>
+					<div id="container"></div>
+				-->
 				</div>
-				<p id="size">Based on the size of the company (Employees, income)</p>			
-				
-				<h3>Revenue Score</h3>
-				<div class="width">
-					<div id="progressBar3" class="progress_bar"></div>				
-				</div>
-				<p id="revenue">Based on the company's reliability with taxes, and revenue</p>			
-				
-				<h3>Recall Score</h3>
-				<div class="width">
-					<div id="progressBar4" class="progress_bar"></div>	
-				</div>
-				<p id="recall">Based on the frequency of recalls performed</p>			
-				
-				<h3 id="overall">Overall Score</h3>
-				<div id="progressBar5" class="progress_bar"></div>
-				<p id="overall">Based on all the previous criteria</p>			
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Scripts -->
+	<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "",
+	    authDomain: "",
+	    databaseURL: "",
+	    projectId: "",
+	    storageBucket: "",
+	    messagingSenderId: ""
+	  };
+	  firebase.initializeApp(config);
+
+	</script>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="main_script.js"></script>
+	<script async defer src="INSERT GOOGLE MAPS API HERE"></script>
+
+	<script>
+		var bar = new ProgressBar.Line(container, {
+			strokeWidth: 4,
+			easing: 'easeInOut',
+			duration: 1400,
+			color: '#FFEA82',
+			trailColor: '#eee',
+			trailWidth: 1,
+			svgStyle: {
+				width: '100%',
+				height: '100%'
+			},
+			from: {
+				color: '#78DF8E'
+			},
+			to: {
+				color: '#ED6A5A'
+			},
+			step: (state, bar) => {
+				bar.path.setAttribute('stroke', state.color);
+			}
+		});
+
+		bar.animate(0.2);
+	</script>
+
+
+
+
+</body>
 
-    		</div>
-
-    	</div>
-    </div>
-    <div id="map"></div>
-
-
-    <script>
-	// Initialize and add the map
-	function initMap() {
-	  var centerMap = {lat: 57.593864, lng: -97.307654};
-	  var mccainloc = {lat: 43.64517, lng:-79.395600};
-	  var natureloc = {lat: 49.168207, lng:-123.062677};
-	  var olymelloc = {lat: 45.611409, lng:-72.886129};
-	  var purityloc = {lat: 49.213943, lng:-57.350243};
-	  var rogersSugarloc = {lat: 45.547400, lng: -73.533280};
-	  var sobeyesloc = {lat: 45.418900, lng:-75.693200};
-	  var nayaloc = {lat: 45.550410, lng: -73.542350};
-	  var daiyaloc = {lat: 49.259700, lng: -123.033680};
-	  var sunoptaloc = {lat: 43.701340, lng: -79.798380};
-	  var organicloc = {lat: 43.493760, lng: -80.200700};
-	  var agropurloc = {lat:45.494420, lng: -75.477290};
-	  var premiereloc= {lat: 45.382940, lng:-74.013040};
-	  var bothwellloc =  {lat: 49.593060, lng: -96.889920};
-	  var dandloc= {lat:49.124540 , lng: -123.096650};
-	  var mapleloc =  {lat: 49.866210, lng: -97.162820};
-	  var kraftloc =  {lat: 43.758650, lng: -79.347050};
-	  var mmloc=  {lat:43.596790, lng: -79.747520};
-	  var pepsiloc =  {lat: 45.414730, lng: -75.636860};
-	  var dareloc=  {lat: 43.431160 , lng: -80.448200};
-	  var flowersloc=  {lat: 30.810660, lng: -83.936910};
-	  var pinnacleloc=  {lat: 39.864120, lng: -74.996780};
-	  var reserloc =  {lat: 39.036290,lng: -95.633230};
-	  var kawarthaloc=  {lat: 44.381720, lng: -79.705170};
-	  var nestleloc =  {lat: 43.760830 , lng: -79.412170};
-	  var saputoloc=  {lat: 46.373749 , lng: -75.981689};
-	  var justusloc =  {lat: 45.105130, lng: -64.293470};
-	  var lauraloc=  {lat: 46.816650 , lng: -71.273610};
-	  var voortmanloc =  {lat: 43.380540, lng: 79.776040};
-	  var lesterloc=  {lat: 45.578920, lng: -73.728460};
-	  var earthloc =  {lat: 49.279200, lng:-123.116220};
-	  var canyonloc=  {lat: 53.490280, lng: -113.457390};
-	  var caraloc =  {lat: 43.819450, lng: -79.542839};
-	  var chapmanloc =  {lat: 44.316750, lng: -80.645560};
-	  var metroloc =  {lat: 45.411280, lng: -75.647350};
-
-	  // The map, centered at Uluru
-	  var map = new google.maps.Map(
-	      document.getElementById('map'), {zoom: 3.7, center: centerMap});
-	  // The marker, positioned at Uluru
-	  var mcCain = new google.maps.Marker({position: mccainloc, map: map, title: 'McCain Foods'});
-	  var nature = new google.maps.Marker({position: natureloc, map: map, title: 'Natures Path'});
-	  var olymel = new google.maps.Marker({position: olymelloc, map: map, title: 'Olymel'});
-	  var purity = new google.maps.Marker({position: purityloc, map: map, title: 'Purity Factories'});
-	  var rogersSugar = new google.maps.Marker({position: rogersSugar, map: map, title: 'rogersSugar'});
-	  var sobeyes = new google.maps.Marker({position: sobeyesloc, map: map, title: 'Sobeyes'});
-	  var naya = new google.maps.Marker({position: nayaloc, map: map, title: 'Naya Waters'});
-	  var daiya = new google.maps.Marker({position: daiyaloc, map: map, title: 'Daiya'});
-	  var sunopta = new google.maps.Marker({position: sunoptaloc, map: map, title: 'SunOpta'});
-	  var organic = new google.maps.Marker({position: organicloc, map: map, title: 'Organic Meadow Cooperative'});
-	  var agropur = new google.maps.Marker({position: agropurloc, map: map, title: 'Agropur'});
-	  var premiere = new google.maps.Marker({position: premiereloc, map: map, title: 'Première Moisson'});
-	  var bothwell = new google.maps.Marker({position: bothwellloc, map: map, title: 'Bothwell Cheese'});
-	  var dand = new google.maps.Marker({position: dareloc, map: map, title: 'Dan-D Foods'});
-	  var maple = new google.maps.Marker({position: mapleloc, map: map, title: 'Maple Leaf Foods'});
-	  var kraft = new google.maps.Marker({position: kraftloc, map: map, title: 'Kraft Heinz'});
-	  var mm = new google.maps.Marker({position: mmloc, map: map, title: 'M&M Food Market'});
-	  var pepsi = new google.maps.Marker({position: pepsiloc, map: map, title: 'PepsiCo'});
-	  var dare = new google.maps.Marker({position: dareloc, map: map, title: 'Dare Foods'});
-	  var kawartha = new google.maps.Marker({position: kawarthaloc, map: map, title: 'Kawartha Dairy Company'});
-	  var nestle = new google.maps.Marker({position: nestleloc, map: map, title: 'Nestle'});
-	  var saputo = new google.maps.Marker({position: saputoloc, map: map, title: 'Saputo Inc'});
-	  var justus = new google.maps.Marker({position: justusloc, map: map, title: 'Just Us!'});
-	  var laura = new google.maps.Marker({position: lauraloc, map: map, title: 'Laura Second Chocolates'});
-	  var voortman = new google.maps.Marker({position: voortmanloc, map: map, title: 'Voortman Cookies'});
-	  var lester = new google.maps.Marker({position: lesterloc, map: map, title: 'Lesters Foods Ltd.'});
-	  var earth = new google.maps.Marker({position: earthloc, map: map, title: 'Earths Own Food Company'});
-	  var canyon = new google.maps.Marker({position: canyonloc, map: map, title: 'Canyon Creek Food Company'});
-	  var cara = new google.maps.Marker({position: caraloc, map: map, title: 'Cara Operations'});
-	  var chapman = new google.maps.Marker({position: chapmanloc, map: map, title: 'Chapmans'});
-	  var metro = new google.maps.Marker({position: metroloc, map: map, title: 'Metro Inc'});
-
-
-	  function clearAnimation() {
-	   	mcCain.setAnimation(null);
-	   	nature.setAnimation(null);
-	   	olymel.setAnimation(null);
-	   	purity.setAnimation(null);
-	   	rogersSugar.setAnimation(null); 
-	   	sobeyes.setAnimation(null); 
-	   	naya.setAnimation(null); 
-	   	daiya.setAnimation(null); 
-	   	sunopta.setAnimation(null); 
-	   	organic.setAnimation(null); 
-	   	agropur.setAnimation(null); 
-	   	premiere.setAnimation(null); 
-	   	bothwell.setAnimation(null); 
-	   	dand.setAnimation(null); 
-	   	maple.setAnimation(null); 
-	   	kraft.setAnimation(null); 
-	   	mm.setAnimation(null); 
-	   	pepsi.setAnimation(null); 
-	   	dare.setAnimation(null); 
-	   	kawartha.setAnimation(null); 
-	   	nestle.setAnimation(null); 
-	   	saputo.setAnimation(null); 
-	   	justus.setAnimation(null); 
-	   	laura.setAnimation(null); 
-	   	voortman.setAnimation(null); 
-	   	lester.setAnimation(null); 
-	   	earth.setAnimation(null); 
-	   	canyon.setAnimation(null); 
-	   	cara.setAnimation(null); 
-	   	chapman.setAnimation(null); 
-	   	metro.setAnimation(null); 
-	  }
-
-
-    	var citymap = {
-		  toronto: {
-		    center: {lat: 43.860314, lng: -79.674},
-		    population: 1714856
-		  },
-		  newyork: {
-		    center: {lat: 45.517843, lng: -74.239148},
-		    population: 2405837
-		  },
-
-		  vancouver: {
-		    center: {lat: 49.25, lng: -123.1},
-		    population: 603502
-		  },
-		  winnipeg: {
-		    center: {lat: 49.90, lng: -96.9},
-		    population: 603502
-		  }
-		};
-
-		  // Construct the circle for each value in citymap.
-		  // Note: We scale the area of the circle based on the population.
-		  for (var city in citymap) {
-		    // Add the circle for this city to the map.
-		    var cityCircle = new google.maps.Circle({
-		      strokeColor: '#FF0000',
-		      strokeOpacity: 0.8,
-		      strokeWeight: 1,
-		      fillColor: '#FF0000',
-		      fillOpacity: 0.15,
-		      map: map,
-		      center: citymap[city].center,
-		      radius: Math.sqrt(citymap[city].population) * 100
-		    });
-		  }
-
-
-	  mcCain.addListener('click', function() {
-	   	clearAnimation();
-	   	mcCain.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "McCain Foods";
-	  	map.setZoom(8);
-	  	map.setCenter(mcCain.getPosition());
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "25%";
-	  	  progress.style.backgroundColor = "#d5fc5f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "65%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "20%";
-	  	  progress.style.backgroundColor = "#8fde51";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "90%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "64%";
-	  	  progress.style.backgroundColor = "#ff9d40";
-		
-	  });
-
-	  saputo.addListener('click', function() {
-	   	clearAnimation();
-	   	saputo.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "Saputo Inc.";
-	  	map.setZoom(8);
-	  	map.setCenter(saputo.getPosition());
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "30%";
-	  	  progress.style.backgroundColor = "#d5fc5f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "75%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "10%";
-	  	  progress.style.backgroundColor = "#8fde51";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "75%";
-	  	  progress.style.backgroundColor = "#ff9d40";
-		
-	  });
-
-
-	  sunopta.addListener('click', function() {
-	   	clearAnimation();
-	   	sunopta.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "Sunopta Foods";
-	  	map.setZoom(8);
-	  	map.setCenter(sunopta.getPosition());
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "30%";
-	  	  progress.style.backgroundColor = "#d5fc5f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "60%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "10%";
-	  	  progress.style.backgroundColor = "#8fde51";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff140f";
-		
-	  });
-
-	  sunopta.addListener('click', function() {
-	   	clearAnimation();
-	   	sunopta.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "Sunopta Foods";
-	  	map.setZoom(8);
-	  	map.setCenter(sunopta.getPosition());
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "30%";
-	  	  progress.style.backgroundColor = "#d5fc5f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "60%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "10%";
-	  	  progress.style.backgroundColor = "#8fde51";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff140f";
-		
-	  });
-
-	  bothwell.addListener('click', function() {
-	   	clearAnimation();
-	   	bothwell.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "Bothwell Foods";
-	  	map.setZoom(8);
-	  	map.setCenter(bothwell.getPosition());
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "32%";
-	  	  progress.style.backgroundColor = "#d5fc5f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "60%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "10%";
-	  	  progress.style.backgroundColor = "#8fde51";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "85%";
-	  	  progress.style.backgroundColor = "#ff993f";
-		
-	  });
-
-	  maple.addListener('click', function() {
-	   	clearAnimation();
-	   	maple.setAnimation(google.maps.Animation.BOUNCE);
-
-	  	var x = document.getElementById("marker");
-	  	var name = document.getElementById("name");
-	  	var desc = document.getElementById("desc");
-	  	var severity = document.getElementById("severity");
-	  	var reasons = document.getElementById("reasons");
-
-	  	x.style.visibility = "visible";
-	  	name.innerHTML = "Maple Leaf Foods";
-	  	map.setZoom(8);
-	  	map.setCenter(maple.getPosition());
-
-	  	  var progress = document.getElementById("progressBar1");
-	  	  progress.style.width = "85%";
-	  	  progress.style.backgroundColor = "#ff993f";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar3");
-	  	  progress.style.width = "60%";
-	  	  progress.style.backgroundColor = "#ffce52";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar4");
-	  	  progress.style.width = "95%";
-	  	  progress.style.backgroundColor = "#ff3118";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar2");
-	  	  progress.style.width = "94%";
-	  	  progress.style.backgroundColor = "#ff3f1e";
-
-	  	  ;
-
-	  	  var progress = document.getElementById("progressBar5");
-	  	  progress.style.width = "85%";
-	  	  progress.style.backgroundColor = "#ff993f";
-		
-	  });
-
-
-	}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-
-    <script>
-
-
-    </script>
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtVBt2DI_zAuB1LYKG-04XlVqGPMM0lQY&callback=initMap">
-    </script>
-  </body>
 </html>
