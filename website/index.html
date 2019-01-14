@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Story by HTML5 UP</title>
+	<title>FoodScraps</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -25,8 +25,9 @@
 		<!-- One -->
 		<section class="banner style2 orient-center content-align-center image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 			<div class="content" id="intro">
-				<h1>CanDev FoodScraps</h1>
-				<p>A solution to the CanDev CFIA Hackathon challenge that gathers data from several companies, provides a score based on compliant criteria, and visualizes the gathered data on a map.</p>
+				<h1>FoodScraps</h1>
+				<p>A solution to the CanDev CFIA Hackathon challenge that gathers data from several companies, provides a score
+					based on compliant criteria, and visualizes the gathered data on a map.</p>
 				<h2>How to use it</h2>
 				<p>Simply click on a marker on the map to show more details of that specific company.</p>
 				<ul class="actions stacked">
@@ -51,102 +52,69 @@
 				</div>
 				<div class="col-lg-3">
 
-		      <div id="marker" class="detail">
-		        <h2 id="name"></h2>
-		        <h4>Review Score</h4>
-		        <div class="width">
-		          <div id="reviewScore" class="progress_bar"></div>
-		        </div>
-		        <p><em>Based on GlassDoor and Google Reviews</em></p>
+					<div id="marker" class="detail">
+						<h2 id="name"></h2>
+						<h4>Review Score</h4>
+						<div class="width">
+							<div id="reviewScore" class="progress_bar"></div>
+						</div>
+						<p><em>Based on GlassDoor Reviews</em></p>
 
-		        <h4>Size Score</h4>
-		        <div class="width">
-		          <div id="progressBar2" class="progress_bar"></div>
-		        </div>
-		        <p id="size"><em>Based on the size of the company<br>(Employees, income)</em></p>
+						<h4>Size Score</h4>
+						<div class="width">
+							<div id="sizeScore" class="progress_bar"></div>
+						</div>
+						<p><em>Based on the size of the company<br>(Employees, income)</em></p>
 
-		        <h4>Revenue Score</h4>
-		        <div class="width">
-		          <div id="progressBar3" class="progress_bar"></div>
-		        </div>
-		        <p id="revenue"><em>Based on the company's reliability with taxes, and revenue</em></p>
+						<h4>Revenue Score</h4>
+						<div class="width">
+							<div id="revenueScore" class="progress_bar"></div>
+						</div>
+						<p><em>Based on the company's reliability with taxes, and revenue</em></p>
 
-		        <h4>Recall Score</h4>
-		        <div class="width">
-		          <div id="progressBar4" class="progress_bar"></div>
-		        </div>
-		        <p id="recall"><em>Based on the frequency of recalls performed</em></p>
+						<h4>Recall Score</h4>
+						<div class="width">
+							<div id="recallScore" class="progress_bar"></div>
+						</div>
+						<p><em>Based on the frequency of recalls performed</em></p>
 
-		        <h4 id="overall">Overall Score</h4>
-		        <div id="progressBar5" class="progress_bar"></div>
-		        <p id="overall"><em>Based on all the criteria above</em></p>
+						<h4>Overall Score</h4>
+						<div class="width">
+							<div id="overallScore" class="progress_bar"></div>
+						</div>
+						<p><em>Based on all criteria</em></p>
 
-					<!--
-					<h2>McCain Foods</h2>
-					<h3>Review Score</h3>
-					<p id="rating">Based on GlassDoor and Google Reviews</p>
-					<div id="container"></div>
-				-->
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<!-- Scripts -->
-	<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "",
-	    authDomain: "",
-	    databaseURL: "",
-	    projectId: "",
-	    storageBucket: "",
-	    messagingSenderId: ""
-	  };
-	  firebase.initializeApp(config);
+		<!-- Scripts -->
+		<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDPspbvTEd_zXvg_SZ5Cryc1aJNY5m7_8U",
+				authDomain: "foodscraps-4d1ce.firebaseapp.com",
+				databaseURL: "https://foodscraps-4d1ce.firebaseio.com",
+				projectId: "foodscraps-4d1ce",
+				storageBucket: "foodscraps-4d1ce.appspot.com",
+				messagingSenderId: "326967451024"
+			};
+			firebase.initializeApp(config);
 
-	</script>
+		</script>
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="main_script.js"></script>
-	<script async defer src="INSERT GOOGLE MAPS API HERE"></script>
-
-	<script>
-		var bar = new ProgressBar.Line(container, {
-			strokeWidth: 4,
-			easing: 'easeInOut',
-			duration: 1400,
-			color: '#FFEA82',
-			trailColor: '#eee',
-			trailWidth: 1,
-			svgStyle: {
-				width: '100%',
-				height: '100%'
-			},
-			from: {
-				color: '#78DF8E'
-			},
-			to: {
-				color: '#ED6A5A'
-			},
-			step: (state, bar) => {
-				bar.path.setAttribute('stroke', state.color);
-			}
-		});
-
-		bar.animate(0.2);
-	</script>
-
-
-
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="main_script.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtVBt2DI_zAuB1LYKG-04XlVqGPMM0lQY&callback=initMap"></script>
 
 </body>
 
