@@ -2,6 +2,8 @@
 
 FoodScraps is a webscraping tool designed at the CanDEV Data Challenge (2018) for the Canadian Food Inspection Agency (CFIA). Foodscraps is a solution for the CFIA to explore publicly accessible data about agriculture and agri-food businesses within Canada or exporting to Canada. The scraped data is used to develop a scoring system to know which companies to flag for inspection for a potential uncompliance of CFIA regulations. The developed strategy uses **Python (Selenium Webdriver)** for webscraping the data and coming up with a score for each company. The scores are then displayed on an interactive webpage using the **Google Maps API** and **Firebase Realtime Database**. The red location markers on the map indicate a higher chance of being flagged for inspection, as opposed to the blue location markers, which indicate a lower chance.
 
+![DEMO](screenshots/Demo.png)
+
 ## Table Of Contents
 
 

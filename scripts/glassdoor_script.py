@@ -49,45 +49,42 @@ def scrape(url,name):
         page = int(page)
 
         ratings = driver.find_element_by_class_name("ratingNum").text
-        if (ratings == "N/A" or ratings == "5"):
-            ratingScore = 0
-        elif ("4" <= ratings < "5"):
-            ratingScore = 2
-        elif ("3" <= ratings < "4"):
-            ratingScore = 4
-        elif ("2" <= ratings < "3"):
-            ratingScore = 6
-        elif ("1" <= ratings < "2"):
-            ratingScore = 8
-        elif (ratings == "0"):
+        if (ratings == "5"):
             ratingScore = 10
+        elif ("4" <= ratings <= "5"):
+            ratingScore = 8
+        elif ("3" <= ratings < "4"):
+            ratingScore = 6
+        elif ("2" <= ratings < "3"):
+            ratingScore = 4
+        elif ("1" <= ratings < "2"):
+            ratingScore = 2
+        else:
+            ratingScore = 5
             
         size = driver.find_element_by_xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[3]/span').text
         if (size == "1 to 50 employees"):
-            sizeScore = 10
-        elif(size == "51 to 200 employees"):
-            sizeScore = 8
-        elif(size == "201 to 500 employees"):
-            sizeScore = 6
-        elif(size == "501 to 1000 employees"):
+            sizeScore = 2
+        elif (size == "51 to 200 employees"):
             sizeScore = 4
-        elif(size == "10000+ employees"):
-            sizeScore = 0
-        else: sizeScore = 2
+        elif (size == "201 to 500 employees"):
+            sizeScore = 6
+        elif (size == "501 to 1000 employees"):
+            sizeScore = 8
+        elif (size == "1001 to 10000 employees"):
+            sizeScore = 9
+        elif (size == "10000+ employees"):
+            sizeScore = 10
+        else: sizeScore = 5
     
-        
         revenue = driver.find_element_by_xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[7]/span').text
-        if (revenue[:6] == "Unknown"):
-            revenueScore = 10
-        elif(revenue[:11] == "$100 to $500"):
-            revenueScore = 6
-        elif(revenue[:7] == "$1 to $2"):
-            revenueScore = 4
-        elif(revenue[:8] == "$5 to $10"):
+        if ("Unknown" in revenue):
             revenueScore = 2
-        elif(revenue[:11] == "$10+ billion"):
-            revenueScore = 0
-        else: revenueScore = 8
+        elif ("million" in revenue):
+            revenueScore = 8
+        elif ("billion" in revenue):
+            revenueScore = 10
+        else: revenueScore = 5
 
     except NoSuchElementException:
         print("finished")

@@ -5,11 +5,6 @@ import pyrebase
 # Add firebase database information here!
 config = {
 
-    "apiKey": "",
-    "authDomain": "",
-    "databaseURL": "",
-    "projectId": "",
-    "storageBucket": ""
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -21,7 +16,6 @@ companies = {
              "Cara Operations": [43.819450, -79.542839],
              "Nature's Path": [43.130, -88.199], 
              "Purity Factories":[40.201020, -82.338220],
-             "Saputo": [46.373749, -75.981689],
              "Agropur": [45.494420, -75.477290],
              "Première Moisson": [45.382940, -74.013040],
              "Dan-D Foods": [49.124540, -123.096650],
@@ -35,7 +29,7 @@ companies = {
              "Reser's Fine Foods": [39.036290, -95.633230], 
              "Kawartha Dairy Company": [44.381720, -79.705170],
              "Nestle": [43.760830, -79.412170],
-             "Saputo Inc": [46.373749 , -75.981689], 
+             "Saputo": [46.373749 , -75.981689], 
              "Just Us!": [45.105130, -64.293470],
              "Laura Secord Chocolates": [46.816650 , -71.273610],
              "Voortman Cookies": [43.380540, -79.776040], 
