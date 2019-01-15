@@ -22,6 +22,10 @@
 		<section class="banner style2 orient-center content-align-center image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 			<div class="content" id="intro">
 				<h1>FoodScraps</h1>
+
+				<p>Made by: <em><a href="https://www.linkedin.com/in/erichaggar/" target="_blank">Eric Haggar</a>, <a href="https://www.linkedin.com/in/munir-aljawahari/" target="_blank">Munir Aljawahari</a>, <a href="https://www.linkedin.com/in/aymen-mhamdi/" target="_blank">Aymen Mhamdi</a>,
+					<a href="https://www.linkedin.com/in/tamer-ibrahim-71b969129/" target="_blank">Tamer Ibrahim</a></em></p>
+
 				<p align="justify"> FoodScraps is a webscraping tool designed at the CanDEV Data Challenge (2018) for the Canadian
 					Food Inspection Agency (CFIA).
 					Foodscraps is a solution for the CFIA to explore publicly accessible data about agriculture and agri-food
@@ -59,7 +63,9 @@
 				<div class="col-lg-3">
 
 					<div id="marker" class="detail">
-						<h2 id="name"></h2>
+						<em>
+							<h2 id="name"></h2>
+						</em>
 						<h4>Glassdoor Review Score</h4>
 						<div class="width">
 							<div id="reviewScore" class="progress_bar"></div>
@@ -94,12 +100,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 		<!-- Scripts -->
 		<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 		<script>
-
 			//Add Firebase database information here!
 			config = {
 				apiKey: "",
@@ -111,7 +117,6 @@
 			}
 
 			firebase.initializeApp(config);
-
 		</script>
 
 		<script src="assets/js/jquery.min.js"></script>
@@ -122,7 +127,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="main_script.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HEREcallback=initMap"></script>
 
 </body>
 
