@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 
 <head>
@@ -26,12 +22,16 @@
 		<section class="banner style2 orient-center content-align-center image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 			<div class="content" id="intro">
 				<h1>FoodScraps</h1>
-				<p>A solution to the CanDev CFIA Hackathon challenge that gathers data from several companies, provides a score
-					based on compliant criteria, and visualizes the gathered data on a map.</p>
-				<h2>How to use it</h2>
-				<p>Simply click on a marker on the map to show more details of that specific company.</p>
+				<p align="justify"> FoodScraps is a webscraping tool designed at the CanDEV Data Challenge (2018) for the Canadian Food Inspection Agency (CFIA).
+				 Foodscraps is a solution for the CFIA to explore publicly accessible data about agriculture and agri-food businesses within Canada or exporting 
+				 to Canada. The scraped data is used to develop a scoring system to know which companies to flag for inspection for a potential uncompliance of 
+				 CFIA regulations. The developed strategy uses Python (Selenium Webdriver) for webscraping the data and calculating a score for each company.
+				 The scores are then displayed on this webpage using the Google Maps API and Firebase Realtime Database. The red location markers on the map 
+				 indicate a higher chance of being flagged for inspection, as opposed to the blue location markers, which indicate a lower chance.</p>
+				<h2>Getting Started</h2>
+				<p>Click on a location marker in the area of choice to show the company's scores.</p>
 				<ul class="actions stacked">
-					<li><a href="#main" class="button primary smooth-scroll">Get Started</a></li>
+					<li><a href="#main" class="button primary smooth-scroll">Go to Map!</a></li>
 				</ul>
 
 			</div>
@@ -54,7 +54,7 @@
 
 					<div id="marker" class="detail">
 						<h2 id="name"></h2>
-						<h4>Review Score</h4>
+						<h4>Glassdoor Review Score</h4>
 						<div class="width">
 							<div id="reviewScore" class="progress_bar"></div>
 						</div>
@@ -93,15 +93,11 @@
 		<!-- Scripts -->
 		<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 		<script>
-			// Initialize Firebase
-			var config = {
-				apiKey: "",
-				authDomain: "",
-				databaseURL: "",
-				projectId: "",
-				storageBucket: "",
-				messagingSenderId: ""
-			};
+
+			config = {
+				//Add Firebase database credentials here!
+			}
+			
 			firebase.initializeApp(config);
 
 		</script>
