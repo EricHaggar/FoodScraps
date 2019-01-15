@@ -2,7 +2,7 @@ import glassdoor_script
 import recalls_script
 import pyrebase
 
-# Add firebase connection here!
+# Add firebase database information here!
 config = {
 
     "apiKey": "",
