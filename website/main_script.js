@@ -1,8 +1,9 @@
+var markers = [];
+
 function initMap() {
 
   var db = firebase.database();
   var companies = [];
-  var markers = [];
 
   var centerMap = {
     lat: 40,
@@ -18,7 +19,7 @@ function initMap() {
   db.ref("companies").on('value', function (snap) {
     snap.forEach(function (childNodes) {
 
-      //This loop iterates over all companies in the database
+      //marker loop iterates over all companies in the database
       company = {};
       company['name'] = childNodes.key;
       company['lat'] = childNodes.val().latitude;
@@ -55,53 +56,67 @@ function initMap() {
 
     for (var i = 0; i < markers.length; i++) {
 
-      var addListener = function (i) {
-
+      var addListener = function(i) {
+        
         google.maps.event.addListener(markers[i], 'click', function () {
-          clearAnimation();
-          var main = document.getElementById("marker");
-          var name = document.getElementById("name");
-     
-          main.style.visibility = "visible";
-          name.innerHTML = markers[i].getTitle();
-          map.setCenter(markers[i].getPosition());
-          map.setZoom(8);
 
-          var progress = document.getElementById("reviewScore");
-          reviewScorePercentage = markers[i].reviewScore * 10;
-          progress.style.width = reviewScorePercentage + "%";
-          progress.style.backgroundColor = "hsl(" + reviewScorePercentage + ", 100%, 42%)";
+        activeMarker = markers[i];
+        clearAnimation(activeMarker);
+        markers[i].setAnimation(google.maps.Animation.BOUNCE);
 
-          var progress = document.getElementById("sizeScore");
-          sizeScorePercentage = markers[i].sizeScore * 10;
-          progress.style.width = sizeScorePercentage + "%";
-          progress.style.backgroundColor = "hsl(" + sizeScorePercentage + ", 100%, 42%)";
+        var main = document.getElementById("marker");
+        var name = document.getElementById("name");
+        
+        main.style.visibility = "visible";
+        name.innerHTML = markers[i].title;
+        map.setCenter(markers[i].position);
+        map.setZoom(8);
 
-          var progress = document.getElementById("revenueScore");
-          revenueScorePercentage = markers[i].revenueScore * 10;
-          progress.style.width = revenueScorePercentage + "%";
-          progress.style.backgroundColor = "hsl(" + revenueScorePercentage + ", 100%, 42%)";
+        var progress = document.getElementById("reviewScore");
+        reviewScorePercentage = markers[i].reviewScore * 10;
+        progress.style.width = reviewScorePercentage + "%";
+        progress.style.backgroundColor = "hsl(" + reviewScorePercentage + ", 100%, 42%)";
 
-          var progress = document.getElementById("recallScore");
-          recallScorePercentage = markers[i].recallScore * 10;
-          progress.style.width = recallScorePercentage + "%";
-          progress.style.backgroundColor = "hsl(" + recallScorePercentage + ", 100%, 42%)";
+        var progress = document.getElementById("sizeScore");
+        sizeScorePercentage = markers[i].sizeScore * 10;
+        progress.style.width = sizeScorePercentage + "%";
+        progress.style.backgroundColor = "hsl(" + sizeScorePercentage + ", 100%, 42%)";
 
-          var progress = document.getElementById("overallScore");
-          progress.style.width = markers[i].overallScore + "%";
-          progress.style.backgroundColor = "hsl(" + overallScore + ", 100%, 42%)";
+        var progress = document.getElementById("revenueScore");
+        revenueScorePercentage = markers[i].revenueScore * 10;
+        progress.style.width = revenueScorePercentage + "%";
+        progress.style.backgroundColor = "hsl(" + revenueScorePercentage + ", 100%, 42%)";
 
-          markers[i].setAnimation(google.maps.Animation.BOUNCE);
+        var progress = document.getElementById("recallScore");
+        recallScorePercentage = markers[i].recallScore * 10;
+        progress.style.width = recallScorePercentage + "%";
+        progress.style.backgroundColor = "hsl(" + recallScorePercentage + ", 100%, 42%)";
 
-        });
-      }
+        var progress = document.getElementById("overallScore");
+        progress.style.width = markers[i].overallScore + "%";
+        progress.style.backgroundColor = "hsl(" + overallScore + ", 100%, 42%)";
 
-      addListener(i);
+      });
+
     }
 
-  });
+    addListener(i);
 
-  function clearAnimation() {
-    //TO BE COMPLETED
+    }
+   
+    });
+  } 
+
+// Clears animation of the all markers except the activeMarker
+function clearAnimation(activeMarker) {
+
+  for (var i = 0; i < markers.length; i++) {
+      if (markers[i].title !== activeMarker.title) {
+        markers[i].setAnimation(null);
+      }
+    }
   }
-}
+  
+
+
+
