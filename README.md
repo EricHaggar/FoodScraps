@@ -106,16 +106,16 @@ In the same file, add your firebase database connection information to `config`
 ```
 //Add Firebase database information here!
 
-    config = {
-	    apiKey: "",
-		authDomain: "",
-		databaseURL: "",
-		projectId: "",
-		storageBucket: "",
-		messagingSenderId: ""
-    }
+config = {
+        apiKey: "",
+	authDomain: "",
+	databaseURL: "",
+	projectId: "",
+	storageBucket: "",
+	messagingSenderId: ""
+}
 
-    firebase.initializeApp(config);
+firebase.initializeApp(config);
 ```
 
 The website can now be run from within the `website` directory
