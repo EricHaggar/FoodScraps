@@ -183,7 +183,7 @@ function calculateMedian(overallScores) {
 function clearAnimation(activeMarker) {
 
   for (var i = 0; i < markers.length; i++) {
-    if (markers[i].title !== activeMarker.title) {
+    if (markers[i].title != activeMarker.title) {
       markers[i].setAnimation(null);
     }
   }
