@@ -1,14 +1,21 @@
 import glassdoor_script
 import recalls_script
 import pyrebase
+import config
 
-# Add firebase database information here!
-config = {
+configuration = {
 
-}
+    "apiKey": config.api_key,
+    "authDomain": config.auth_domain,
+    "databaseURL": config.database_URL,
+    "projectId": config.project_id,
+    "storageBucket": config.storage_bucket,
 
-firebase = pyrebase.initialize_app(config)
+    }
+
+firebase = pyrebase.initialize_app(configuration)
 database = firebase.database()
+
 
 # dictionary storing the company name with latitude and longitude respectively
 companies = {   
