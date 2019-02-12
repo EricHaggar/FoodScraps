@@ -66,22 +66,14 @@ Create a free Firebase account and create an empty realtime database with read a
 https://firebase.google.com/
 ```
 
-Navigate to `master.py` and add your Firebase database information in `config` 
+Navigate to scripts and add your Firebase database information in a file called `config.py`. Use the following format
 
 ```
-# Add firebase database information here!
-
-config = {
-
-    "apiKey": "",
-    "authDomain": "",
-    "databaseURL": "",
-    "projectId": "",
-    "storageBucket": ""
-}
-
-firebase = pyrebase.initialize_app(config)
-database = firebase.database()
+api_key = "",
+auth_domain = "",
+database_URL =  "",
+project_id = "",
+storage_bucket = ""
 ```
 
 The scripts are ready to be run in the background!
@@ -103,18 +95,16 @@ Navigate to `index.html` and add your [Google Maps API Key](https://developers.g
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 ```
 
-In the same file, add your firebase database connection information to `config`
+In the same directory, create a `config.js` file and add your firebase credentials in the following format
 
 ```
-//Add Firebase database information here!
-
-config = {
-        apiKey: "",
-	authDomain: "",
-	databaseURL: "",
-	projectId: "",
-	storageBucket: "",
-	messagingSenderId: ""
+var config = {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
 }
 
 firebase.initializeApp(config);
