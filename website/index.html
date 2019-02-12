@@ -76,19 +76,19 @@
 						<div class="width">
 							<div id="sizeScore" class="progress_bar"></div>
 						</div>
-						<p><em>Based on the size of the company<br>(Employees, income)</em></p>
+						<p><em>Based on the size of the company<br></em></p>
 
 						<h4>Revenue Score</h4>
 						<div class="width">
 							<div id="revenueScore" class="progress_bar"></div>
 						</div>
-						<p><em>Based on the company's reliability with taxes, and revenue</em></p>
+						<p><em>Based on the company's revenue</em></p>
 
 						<h4>Recall Score</h4>
 						<div class="width">
 							<div id="recallScore" class="progress_bar"></div>
 						</div>
-						<p><em>Based on the frequency of recalls performed</em></p>
+						<p><em>Based on the number of recalls performed</em></p>
 
 						<h4><b>Overall Score</b></h4>
 						<div class="width">
@@ -105,20 +105,7 @@
 
 		<!-- Scripts -->
 		<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
-		<script>
-			//Add Firebase database information here!
-			config = {
-				apiKey: "",
-				authDomain: "",
-				databaseURL: "",
-				projectId: "",
-				storageBucket: "",
-				messagingSenderId: ""
-			}
-
-			firebase.initializeApp(config);
-		</script>
-
+		<script src='./config.js'></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -127,7 +114,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="main_script.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HEREcallback=initMap"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
 </body>
 

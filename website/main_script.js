@@ -3,6 +3,7 @@ var markers = [];
 function initMap() {
 
   var db = firebase.database();
+
   var companies = [];
   var iconURL;
   var overallScores = [];
